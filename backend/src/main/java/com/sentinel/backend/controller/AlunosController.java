@@ -3,31 +3,55 @@ package com.sentinel.backend.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sentinel.backend.entity.Alunos;
-import com.sentinel.backend.service.AlunosService;
+import com.sentinel.backend.entity.Aluno;
+import com.sentinel.backend.entity.RespostaModelo;
+import com.sentinel.backend.service.AlunoService;
 
 @RestController
 @RequestMapping("/alunos")
+@CrossOrigin("*")
 public class AlunosController {
 
     @Autowired
-    private AlunosService alunosService;
+    private AlunoService as;
 
-    @PostMapping("/save")
-    private ResponseEntity<String> save(@RequestBody Alunos alunos) {
-        try {
-
-            String mensagem = this.alunosService.save(alunos);
-            return new ResponseEntity<String>(mensagem, HttpStatus.OK);
-
-        } catch (Exception e) {
-            return new ResponseEntity<String>("Erro ao cadastrar", HttpStatus.BAD_REQUEST);
-        }
+    @GetMapping("/findAll")
+    public Iterable<Aluno> listar() {
+        return as.listar();
     }
 
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<RespostaModelo> remover(@PathVariable long id) {
+        return as.remover(id);
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<?> alterar(@RequestBody Aluno aluno) {
+        return as.cadastrarAlterar(aluno, "alterar");
+    }
+
+    @PostMapping("/save")
+    public ResponseEntity<?> cadastrar(@RequestBody Aluno aluno) {
+        return as.cadastrarAlterar(aluno, "cadastrar");
+    }
+
+    @GetMapping("/findById/{id}")
+    public ResponseEntity<Aluno> findById(@PathVariable long id) {
+        try {
+            Aluno aluno = as.findById(id);
+            return new ResponseEntity<>(aluno, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+    }
 }
