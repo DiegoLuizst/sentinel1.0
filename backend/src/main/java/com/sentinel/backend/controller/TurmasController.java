@@ -1,0 +1,64 @@
+package com.sentinel.backend.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.sentinel.backend.entity.RespostaModelo;
+import com.sentinel.backend.entity.Turma;
+
+import com.sentinel.backend.service.TurmasService;
+
+@RestController
+@RequestMapping("/turmas")
+@CrossOrigin("*")
+public class TurmasController {
+
+    @Autowired
+    private TurmasService ts;
+
+    @GetMapping("/findAll")
+    public Iterable<Turma> listar() {
+        return ts.listar();
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<RespostaModelo> remover(@PathVariable long id) {
+        return ts.remover(id);
+
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<?> alterar(@RequestBody Turma cm) {
+        return ts.cadastrarAlterar(cm, "alterar");
+    }
+
+    @PostMapping("/save")
+    public ResponseEntity<?> cadastrar(@RequestBody Turma cm) {
+        return ts.cadastrarAlterar(cm, "cadastrar");
+    }
+
+    // Listar por id
+    @GetMapping("/findById/{id}")
+    public ResponseEntity<Turma> findById(@PathVariable long id) {
+        try {
+
+            Turma turma = this.ts.findById(id);
+            return new ResponseEntity<>(turma, HttpStatus.OK);
+
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+
+    }
+
+}

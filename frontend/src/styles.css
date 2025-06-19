@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+@import '@fortawesome/fontawesome-free/css/all.css';
+@import 'mdb-angular-ui-kit/assets/scss/mdb.scss';
+@import "ag-grid-community/styles/ag-grid.css";
+@import "ag-grid-community/styles/ag-theme-quartz.css";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+
+.centralizar{
+  text-align: center;
+}
+
+
+.direita{
+  text-align: right;
+}
+
+
+body{
+  background-color: #f9faef !important;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+
+
+

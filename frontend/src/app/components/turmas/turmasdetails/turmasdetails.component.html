@@ -1,0 +1,63 @@
+<div class="container-fluid"> <!-- Adicionado espaço no topo do container -->
+  <div class="row">
+    <div class="card">
+      <div class="card-body">
+        <div class="col-lg-12 centralizar topo">
+          <div class="card">
+            <div class="card-body">
+              <!-- Título -->
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <h5 class="card-title mb-0">Cadastro de Turmas</h5>
+              </div>
+
+
+              <div class="row mb-3">
+                <div class="col-md-6 mb-3">
+                  <mdb-form-control>
+                    <input mdbInput type="text" id="nome" class="form-control" [(ngModel)]="turma.nome" />
+                    <label mdbLabel class="form-label" for="nome">Nome</label>
+                  </mdb-form-control>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <mdb-form-control>
+                    <input mdbInput type="text" id="sala" class="form-control" [(ngModel)]="turma.sala" />
+                    <label mdbLabel class="form-label" for="sala">Sala</label>
+                  </mdb-form-control>
+                </div>
+              </div>
+
+
+              <div class="row mb-4"> <!-- Aumentado o margin-bottom -->
+                <div class="col-md-4 mb-3">
+                  <mdb-form-control>
+                    <input mdbInput type="text" id="nivel" class="form-control" [(ngModel)]="turma.nivel" />
+                    <label mdbLabel class="form-label" for="nivel">Nível</label>
+                  </mdb-form-control>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <mdb-form-control>
+                    <input mdbInput type="text" id="ano" class="form-control" [(ngModel)]="turma.ano" />
+                    <label mdbLabel class="form-label" for="ano">Ano</label>
+                  </mdb-form-control>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <mdb-form-control>
+                    <input mdbInput type="text" id="turno" class="form-control" [(ngModel)]="turma.turno" />
+                    <label mdbLabel class="form-label" for="turno">Turno</label>
+                  </mdb-form-control>
+                </div>
+              </div>
+
+              <!-- Botão com margem superior -->
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
+                <button type="button" class="btn btn-warning btn-rounded" mdbRipple (click)="save()">
+                  <i class="fas fa-save me-2"></i>Salvar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

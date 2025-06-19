@@ -1,0 +1,18 @@
+# Backend - Java
+/backend/target/
+/backend/.classpath
+/backend/.project
+/backend/.settings/
+/backend/*.iml
+
+# Frontend - Angular
+/frontend/node_modules/
+/frontend/dist/
+/frontend/.angular
+
+# Comum
+.env
+*.log
+.DS_Store
+.idea/
+.vscode/
