@@ -249,9 +249,13 @@ export class AlunosdetailsComponent {
         },
         error: (erro) => {
           console.error('Erro completo:', erro);
+          let mensagem = `Status: ${erro.status} - ${erro.statusText || 'Sem mensagem'}`;
+          if (erro.error && typeof erro.error === 'object' && erro.error.mensagem) {
+            mensagem = erro.error.mensagem;
+          }
           Swal.fire({
             title: 'Ocorreu um erro!',
-            text: `Status: ${erro.status} - ${erro.statusText || 'Sem mensagem'}`,
+            text: mensagem,
             icon: 'error',
             confirmButtonText: 'Ok'
           });
