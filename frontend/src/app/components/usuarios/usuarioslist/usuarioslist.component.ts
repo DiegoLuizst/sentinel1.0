@@ -1,0 +1,154 @@
+import { Component, inject } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
+import { AgGridModule } from 'ag-grid-angular';
+import { ColDef, GridApi, GridOptions, GridReadyEvent } from 'ag-grid-community';
+import { ModuleRegistry, AllCommunityModule } from 'ag-grid-community';
+import Swal from 'sweetalert2';
+import { Usuario } from '../../../models/usuario';
+import { UsuariosService } from '../../../services/usuarios.service';
+
+ModuleRegistry.registerModules([AllCommunityModule]);
+
+@Component({
+  selector: 'app-usuarioslist',
+  standalone: true,
+  imports: [AgGridModule, RouterLink],
+  templateUrl: './usuarioslist.component.html',
+  styleUrl: './usuarioslist.component.css'
+})
+export class UsuarioslistComponent {
+
+  private gridApi!: GridApi<Usuario>;
+  public gridOptions: GridOptions<Usuario> = {
+    pagination: true,
+    paginationPageSize: 20,
+    theme: 'legacy',
+    localeText: {
+      page: 'Página',
+      to: 'até',
+      of: 'de',
+      more: 'mais',
+      next: 'Próxima',
+      last: 'Última',
+      first: 'Primeira',
+      previous: 'Anterior',
+      loadingOoo: 'Carregando...',
+      noRowsToShow: 'Nenhum registro encontrado'
+    },
+    domLayout: 'autoHeight'
+  };
+
+  colDefs: ColDef<Usuario>[] = [
+    { field: 'id', headerName: 'ID', filter: 'agNumberColumnFilter', floatingFilter: true },
+    { field: 'nome', headerName: 'Nome', filter: 'agTextColumnFilter', floatingFilter: true },
+    { field: 'email', headerName: 'Email', filter: 'agTextColumnFilter', floatingFilter: true },
+    {
+      field: 'permissaoGrupo.nome',
+      headerName: 'Permissão',
+      valueGetter: params => params.data?.permissaoGrupo?.nome,
+      filter: 'agTextColumnFilter',
+      floatingFilter: true
+    },
+    {
+      headerName: 'Ações',
+      cellRenderer: (params: any) => {
+        const usuario = params.data;
+        return `
+          <button type="button" class="btn btn-warning btn-rounded btn-sm btn-icon" data-action="edit" data-id="${usuario.id}">
+            <i class="fas fa-edit"></i>
+          </button>
+          <button type="button" class="btn btn-danger btn-rounded btn-sm btn-icon" data-action="delete" data-id="${usuario.id}">
+            <i class="fas fa-trash-alt"></i>
+          </button>
+        `;
+      },
+      sortable: false,
+      filter: false,
+      cellClass: ['no-padding']
+    }
+  ];
+
+  defaultColDef: ColDef = {
+    sortable: true,
+    filter: true,
+    resizable: true,
+    flex: 1
+  };
+
+  rowData: Usuario[] = [];
+  usuariosService = inject(UsuariosService);
+  router = inject(Router);
+
+  constructor() {
+    this.findAll();
+  }
+
+  ngAfterViewInit() {
+    document.addEventListener('click', (event) => {
+      const target = event.target as HTMLElement;
+      const button = target.closest('button[data-action]');
+      if (button) {
+        const action = button.getAttribute('data-action');
+        const id = button.getAttribute('data-id');
+        if (action === 'edit') {
+          this.router.navigate(['/admin/usuarios/edit', id]);
+        } else if (action === 'delete') {
+          this.deleteById(Number(id));
+        }
+      }
+    });
+  }
+
+  findAll() {
+    this.usuariosService.findAll().subscribe({
+      next: lista => {
+        this.rowData = lista;
+      },
+      error: () => {
+        Swal.fire({
+          title: 'Ocorreu um erro!',
+          icon: 'error',
+          confirmButtonText: 'Ok'
+        });
+      }
+    });
+  }
+
+  onGridReady(params: GridReadyEvent<Usuario>) {
+    this.gridApi = params.api;
+    setTimeout(() => {
+      params.api.sizeColumnsToFit();
+    }, 50);
+  }
+
+  deleteById(id: number) {
+    Swal.fire({
+      title: 'Confirma exclusão de registro?',
+      icon: 'warning',
+      showConfirmButton: true,
+      showDenyButton: true,
+      confirmButtonText: 'Sim',
+      denyButtonText: 'Não'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.usuariosService.delete(id).subscribe({
+          next: () => {
+            Swal.fire({
+              title: 'Usuário Excluído com sucesso!',
+              icon: 'success',
+              confirmButtonText: 'Ok'
+            });
+            this.findAll();
+          },
+          error: () => {
+            Swal.fire({
+              title: 'Ocorreu um erro!',
+              icon: 'error',
+              confirmButtonText: 'Ok'
+            });
+          }
+        });
+      }
+    });
+  }
+}

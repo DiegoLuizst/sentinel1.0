@@ -1,0 +1,37 @@
+.card-title{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: large;
+  color: #0a0a0a;
+
+}
+
+.form-control {
+  font-family: 'Roboto', sans-serif; /* Recomendo usar diretamente Roboto */
+  font-size: small; /* ~13px */
+  color: #0a0a0a;
+}
+
+
+.card {
+  margin-top: 50px;
+  display: inline-block; /* Faz o card se ajustar ao conteúdo */
+  width: 100%; /* Mantém a largura total */
+
+
+
+
+}
+
+.container {
+  background-color: #f9faef!important;
+
+}
+
+.card-body {
+  padding: 1rem; /* Mantém seu padding original */
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* eixo-x, eixo-y, desfoque, cor */
+  border: none;
+}
+
