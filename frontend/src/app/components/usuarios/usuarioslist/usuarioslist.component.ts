@@ -54,6 +54,9 @@ export class UsuarioslistComponent {
       cellRenderer: (params: any) => {
         const usuario = params.data;
         return `
+          <button type="button" class="btn btn-info btn-rounded btn-sm btn-icon" data-action="view" data-id="${usuario.id}">
+            <i class="fas fa-eye"></i>
+          </button>
           <button type="button" class="btn btn-warning btn-rounded btn-sm btn-icon" data-action="edit" data-id="${usuario.id}">
             <i class="fas fa-edit"></i>
           </button>
@@ -92,6 +95,8 @@ export class UsuarioslistComponent {
         const id = button.getAttribute('data-id');
         if (action === 'edit') {
           this.router.navigate(['/admin/usuarios/edit', id]);
+        } else if (action === 'view') {
+          this.viewById(Number(id));
         } else if (action === 'delete') {
           this.deleteById(Number(id));
         }
@@ -119,6 +124,21 @@ export class UsuarioslistComponent {
     setTimeout(() => {
       params.api.sizeColumnsToFit();
     }, 50);
+  }
+
+  viewById(id: number) {
+    const usuario = this.rowData.find(u => u.id === id);
+    if (usuario) {
+      Swal.fire({
+        title: 'Usuário',
+        html: `
+          <p><strong>Nome:</strong> ${usuario.nome}</p>
+          <p><strong>Email:</strong> ${usuario.email}</p>
+          <p><strong>Permissão:</strong> ${usuario.permissaoGrupo?.nome || ''}</p>
+        `,
+        icon: 'info'
+      });
+    }
   }
 
   deleteById(id: number) {

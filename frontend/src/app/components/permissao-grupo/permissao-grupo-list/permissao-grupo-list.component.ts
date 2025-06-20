@@ -46,6 +46,9 @@ export class PermissaoGrupoListComponent {
       cellRenderer: (params: any) => {
         const pg = params.data;
         return `
+          <button type="button" class="btn btn-info btn-rounded btn-sm btn-icon" data-action="view" data-id="${pg.id}">
+            <i class="fas fa-eye"></i>
+          </button>
           <button type="button" class="btn btn-warning btn-rounded btn-sm btn-icon" data-action="edit" data-id="${pg.id}">
             <i class="fas fa-edit"></i>
           </button>
@@ -84,6 +87,8 @@ export class PermissaoGrupoListComponent {
         const id = button.getAttribute('data-id');
         if (action === 'edit') {
           this.router.navigate(['/admin/permissao/edit', id]);
+        } else if (action === 'view') {
+          this.viewById(Number(id));
         } else if (action === 'delete') {
           this.deleteById(Number(id));
         }
@@ -103,6 +108,19 @@ export class PermissaoGrupoListComponent {
   onGridReady(params: GridReadyEvent<PermissaoGrupo>) {
     this.gridApi = params.api;
     setTimeout(() => { params.api.sizeColumnsToFit(); }, 50);
+  }
+
+  viewById(id: number) {
+    const grupo = this.rowData.find(g => g.id === id);
+    if (grupo) {
+      Swal.fire({
+        title: 'Permissão Grupo',
+        html: `
+          <p><strong>Nome:</strong> ${grupo.nome}</p>
+        `,
+        icon: 'info'
+      });
+    }
   }
 
   deleteById(id: number) {
