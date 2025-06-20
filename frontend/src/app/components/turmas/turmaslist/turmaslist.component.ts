@@ -5,6 +5,7 @@ import { Router, RouterLink } from '@angular/router';
 import Swal from 'sweetalert2';
 import { ColDef, GridApi, GridReadyEvent, GridOptions } from 'ag-grid-community';
 import { AgGridModule } from 'ag-grid-angular';
+import { MdbRippleModule } from 'mdb-angular-ui-kit/ripple';
 import { ModuleRegistry } from 'ag-grid-community';
 import { AllCommunityModule } from 'ag-grid-community';
 
@@ -17,7 +18,7 @@ ModuleRegistry.registerModules([AllCommunityModule]);
 @Component({
   selector: 'app-turmaslist',
   standalone: true,
-  imports: [AgGridModule,RouterLink],
+  imports: [AgGridModule, MdbRippleModule, RouterLink],
   templateUrl: './turmaslist.component.html',
   styleUrl: './turmaslist.component.css'
 })

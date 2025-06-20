@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AgGridModule } from 'ag-grid-angular';
+import { MdbRippleModule } from 'mdb-angular-ui-kit/ripple';
 import { ColDef, GridApi, GridOptions, GridReadyEvent } from 'ag-grid-community';
 import { ModuleRegistry, AllCommunityModule } from 'ag-grid-community';
 import { Aluno } from '../../../models/aluno';
@@ -12,7 +13,7 @@ ModuleRegistry.registerModules([AllCommunityModule]);
 @Component({
   selector: 'app-alunoslist',
   standalone: true,
-  imports: [AgGridModule, RouterLink],
+  imports: [AgGridModule, MdbRippleModule, RouterLink],
   templateUrl: './alunoslist.component.html',
   styleUrl: './alunoslist.component.css'
 })

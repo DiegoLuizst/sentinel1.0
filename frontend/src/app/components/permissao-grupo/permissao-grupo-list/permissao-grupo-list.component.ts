@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AgGridModule } from 'ag-grid-angular';
+import { MdbRippleModule } from 'mdb-angular-ui-kit/ripple';
 import { ColDef, GridApi, GridOptions, GridReadyEvent } from 'ag-grid-community';
 import { ModuleRegistry, AllCommunityModule } from 'ag-grid-community';
 import Swal from 'sweetalert2';
@@ -12,7 +13,7 @@ ModuleRegistry.registerModules([AllCommunityModule]);
 @Component({
   selector: 'app-permissao-grupo-list',
   standalone: true,
-  imports: [AgGridModule, RouterLink],
+  imports: [AgGridModule, MdbRippleModule, RouterLink],
   templateUrl: './permissao-grupo-list.component.html',
   styleUrl: './permissao-grupo-list.component.css'
 })

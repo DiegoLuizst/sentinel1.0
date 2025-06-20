@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
+import { MdbRippleModule } from 'mdb-angular-ui-kit/ripple';
 import { Turma } from '../../../models/turmas';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2'
@@ -8,7 +9,7 @@ import { TurmasService } from '../../../services/turmas.service';
 
 @Component({
   selector: 'app-turmasdetails',
-  imports: [MdbFormsModule, FormsModule],
+  imports: [MdbFormsModule, MdbRippleModule, FormsModule],
   templateUrl: './turmasdetails.component.html',
   styleUrl: './turmasdetails.component.css'
 })
