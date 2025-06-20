@@ -55,7 +55,7 @@
               <div class="row mb-3">
                 <div class="col-md-6 mb-3">
                   <mdb-form-control>
-                    <input mdbInput type="text" id="cep" class="form-control" [(ngModel)]="aluno.cep" />
+                    <input mdbInput type="text" id="cep" class="form-control" [(ngModel)]="aluno.cep" (blur)="buscarCepAluno()" />
                     <label mdbLabel class="form-label" for="cep">CEP</label>
                   </mdb-form-control>
                 </div>
@@ -119,6 +119,10 @@
                   </mdb-form-control>
                 </div>
                 <div class="col-md-6 mb-3">
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="mesmo_tel1" [(ngModel)]="mesmoTelefoneResp1" (change)="atualizarTelefoneResp1()" />
+                    <label class="form-check-label" for="mesmo_tel1">Mesmo telefone que aluno</label>
+                  </div>
                   <mdb-form-control>
                     <input mdbInput type="text" id="telefone_resp1" class="form-control" [(ngModel)]="aluno.telefone_resp1" />
                     <label mdbLabel class="form-label" for="telefone_resp1">Telefone</label>
@@ -127,6 +131,10 @@
               </div>
               <div class="row mb-3">
                 <div class="col-md-6 mb-3">
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="mesmo_email1" [(ngModel)]="mesmoEmailResp1" (change)="atualizarEmailResp1()" />
+                    <label class="form-check-label" for="mesmo_email1">Mesmo email que aluno</label>
+                  </div>
                   <mdb-form-control>
                     <input mdbInput type="text" id="email_resp1" class="form-control" [(ngModel)]="aluno.email_resp1" />
                     <label mdbLabel class="form-label" for="email_resp1">Email</label>
@@ -141,8 +149,12 @@
               </div>
               <div class="row mb-3">
                 <div class="col-md-6 mb-3">
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="mesmo_end1" [(ngModel)]="mesmoEnderecoResp1" (change)="atualizarEnderecoResp1()" />
+                    <label class="form-check-label" for="mesmo_end1">Mesmo endereço que aluno</label>
+                  </div>
                   <mdb-form-control>
-                    <input mdbInput type="text" id="cep_resp1" class="form-control" [(ngModel)]="aluno.cep_resp1" />
+                    <input mdbInput type="text" id="cep_resp1" class="form-control" [(ngModel)]="aluno.cep_resp1" (blur)="buscarCepResp1()" />
                     <label mdbLabel class="form-label" for="cep_resp1">CEP</label>
                   </mdb-form-control>
                 </div>
@@ -199,45 +211,61 @@
               </div>
 
               <!-- Dados do responsável 2 -->
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="sem_resp2" [(ngModel)]="semResponsavel2" (change)="toggleResponsavel2()" />
+                <label class="form-check-label" for="sem_resp2">Não possui responsavel 2</label>
+              </div>
               <h6 class="mb-3">Dados Responsavel 2</h6>
               <div class="row mb-3">
                 <div class="col-md-6 mb-3">
                   <mdb-form-control>
-                    <input mdbInput type="text" id="nome_resp2" class="form-control" [(ngModel)]="aluno.nome_resp2" />
+                    <input mdbInput type="text" id="nome_resp2" class="form-control" [(ngModel)]="aluno.nome_resp2" [disabled]="semResponsavel2" />
                     <label mdbLabel class="form-label" for="nome_resp2">Nome Responsável</label>
                   </mdb-form-control>
                 </div>
                 <div class="col-md-6 mb-3">
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="mesmo_tel2" [(ngModel)]="mesmoTelefoneResp2" (change)="atualizarTelefoneResp2()" />
+                    <label class="form-check-label" for="mesmo_tel2">Mesmo telefone que aluno</label>
+                  </div>
                   <mdb-form-control>
-                    <input mdbInput type="text" id="telefone_resp2" class="form-control" [(ngModel)]="aluno.telefone_resp2" />
+                    <input mdbInput type="text" id="telefone_resp2" class="form-control" [(ngModel)]="aluno.telefone_resp2" [disabled]="semResponsavel2" />
                     <label mdbLabel class="form-label" for="telefone_resp2">Telefone</label>
                   </mdb-form-control>
                 </div>
               </div>
               <div class="row mb-3">
                 <div class="col-md-6 mb-3">
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="mesmo_email2" [(ngModel)]="mesmoEmailResp2" (change)="atualizarEmailResp2()" />
+                    <label class="form-check-label" for="mesmo_email2">Mesmo email que aluno</label>
+                  </div>
                   <mdb-form-control>
-                    <input mdbInput type="text" id="email_resp2" class="form-control" [(ngModel)]="aluno.email_resp2" />
+                    <input mdbInput type="text" id="email_resp2" class="form-control" [(ngModel)]="aluno.email_resp2" [disabled]="semResponsavel2" />
                     <label mdbLabel class="form-label" for="email_resp2">Email</label>
                   </mdb-form-control>
                 </div>
                 <div class="col-md-6 mb-3">
                   <mdb-form-control>
-                    <input mdbInput type="text" id="cpf_resp2" class="form-control" [(ngModel)]="aluno.cpf_resp2" />
+                    <input mdbInput type="text" id="cpf_resp2" class="form-control" [(ngModel)]="aluno.cpf_resp2" [disabled]="semResponsavel2" />
                     <label mdbLabel class="form-label" for="cpf_resp2">CPF</label>
                   </mdb-form-control>
                 </div>
               </div>
               <div class="row mb-3">
                 <div class="col-md-6 mb-3">
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="mesmo_end2" [(ngModel)]="mesmoEnderecoResp2" (change)="atualizarEnderecoResp2()" />
+                    <label class="form-check-label" for="mesmo_end2">Mesmo endereço que aluno</label>
+                  </div>
                   <mdb-form-control>
-                    <input mdbInput type="text" id="cep_resp2" class="form-control" [(ngModel)]="aluno.cep_resp2" />
+                    <input mdbInput type="text" id="cep_resp2" class="form-control" [(ngModel)]="aluno.cep_resp2" (blur)="buscarCepResp2()" [disabled]="semResponsavel2" />
                     <label mdbLabel class="form-label" for="cep_resp2">CEP</label>
                   </mdb-form-control>
                 </div>
                 <div class="col-md-6 mb-3">
                   <mdb-form-control>
-                    <input mdbInput type="text" id="rua_resp2" class="form-control" [(ngModel)]="aluno.rua_resp2" />
+                    <input mdbInput type="text" id="rua_resp2" class="form-control" [(ngModel)]="aluno.rua_resp2" [disabled]="semResponsavel2" />
                     <label mdbLabel class="form-label" for="rua_resp2">Rua</label>
                   </mdb-form-control>
                 </div>
@@ -245,13 +273,13 @@
               <div class="row mb-3">
                 <div class="col-md-6 mb-3">
                   <mdb-form-control>
-                    <input mdbInput type="text" id="numero_resp2" class="form-control" [(ngModel)]="aluno.numero_resp2" />
+                    <input mdbInput type="text" id="numero_resp2" class="form-control" [(ngModel)]="aluno.numero_resp2" [disabled]="semResponsavel2" />
                     <label mdbLabel class="form-label" for="numero_resp2">Número</label>
                   </mdb-form-control>
                 </div>
                 <div class="col-md-6 mb-3">
                   <mdb-form-control>
-                    <input mdbInput type="text" id="complemento_resp2" class="form-control" [(ngModel)]="aluno.complemento_resp2" />
+                    <input mdbInput type="text" id="complemento_resp2" class="form-control" [(ngModel)]="aluno.complemento_resp2" [disabled]="semResponsavel2" />
                     <label mdbLabel class="form-label" for="complemento_resp2">Complemento</label>
                   </mdb-form-control>
                 </div>
@@ -259,13 +287,13 @@
               <div class="row mb-3">
                 <div class="col-md-6 mb-3">
                   <mdb-form-control>
-                    <input mdbInput type="text" id="bairro_resp2" class="form-control" [(ngModel)]="aluno.bairro_resp2" />
+                    <input mdbInput type="text" id="bairro_resp2" class="form-control" [(ngModel)]="aluno.bairro_resp2" [disabled]="semResponsavel2" />
                     <label mdbLabel class="form-label" for="bairro_resp2">Bairro</label>
                   </mdb-form-control>
                 </div>
                 <div class="col-md-6 mb-3">
                   <mdb-form-control>
-                    <input mdbInput type="text" id="cidade_resp2" class="form-control" [(ngModel)]="aluno.cidade_resp2" />
+                    <input mdbInput type="text" id="cidade_resp2" class="form-control" [(ngModel)]="aluno.cidade_resp2" [disabled]="semResponsavel2" />
                     <label mdbLabel class="form-label" for="cidade_resp2">Cidade</label>
                   </mdb-form-control>
                 </div>
@@ -273,13 +301,13 @@
               <div class="row mb-4">
                 <div class="col-md-6 mb-3">
                   <mdb-form-control>
-                    <input mdbInput type="text" id="estado_resp2" class="form-control" [(ngModel)]="aluno.estado_resp2" />
+                    <input mdbInput type="text" id="estado_resp2" class="form-control" [(ngModel)]="aluno.estado_resp2" [disabled]="semResponsavel2" />
                     <label mdbLabel class="form-label" for="estado_resp2">Estado</label>
                   </mdb-form-control>
                 </div>
                 <div class="col-md-6 mb-3">
                   <mdb-form-control>
-                    <select mdbInput class="form-control" [(ngModel)]="aluno.parentesco_resp2">
+                    <select mdbInput class="form-control" [(ngModel)]="aluno.parentesco_resp2" [disabled]="semResponsavel2">
                       <option *ngFor="let p of parentescos" [value]="p">{{ p }}</option>
                     </select>
                     <label mdbLabel class="form-label">Parentesco</label>

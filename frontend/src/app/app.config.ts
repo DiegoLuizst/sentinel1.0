@@ -17,6 +17,6 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
     provideHttpClient(),
     importProvidersFrom(MatDatepickerModule),
-    provideNativeDateAdapter()
+    provideNativeDateAdapter('pt-BR')
   ]
 };
