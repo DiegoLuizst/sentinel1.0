@@ -27,12 +27,6 @@ export class AlunosService {
     return this.http.put<string>(this.API + '/update', aluno, { responseType: 'text' as 'json' });
   }
 
-  upload(id: number, files: File[]): Observable<any> {
-    const formData = new FormData();
-    files.forEach(f => formData.append('files', f));
-    return this.http.post(this.API + '/upload/' + id, formData);
-  }
-
   findById(id: number): Observable<Aluno> {
     return this.http.get<Aluno>(this.API + '/findById/' + id);
   }
