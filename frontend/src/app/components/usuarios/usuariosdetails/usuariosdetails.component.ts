@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -15,7 +15,7 @@ import { PermissaoGrupoService } from '../../../services/permissao-grupo.service
   templateUrl: './usuariosdetails.component.html',
   styleUrl: './usuariosdetails.component.css'
 })
-export class UsuariosdetailsComponent {
+export class UsuariosdetailsComponent implements OnInit {
 
   usuario: Usuario = new Usuario('', '', '', null);
   grupos: PermissaoGrupo[] = [];
@@ -26,10 +26,13 @@ export class UsuariosdetailsComponent {
 
   constructor() {
     const id = this.router.snapshot.params['id'];
-    this.loadGrupos();
     if (id > 0) {
       this.findById(id);
     }
+  }
+
+  ngOnInit(): void {
+    this.loadGrupos();
   }
 
   loadGrupos() {
