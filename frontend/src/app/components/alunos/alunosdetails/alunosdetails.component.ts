@@ -53,6 +53,10 @@ export class AlunosdetailsComponent {
     '',
     '',
     '',
+    '',
+    '',
+    '',
+    '',
     undefined,
     undefined
   );
