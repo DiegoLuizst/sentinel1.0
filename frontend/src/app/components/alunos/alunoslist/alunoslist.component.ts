@@ -40,7 +40,19 @@ export class AlunoslistComponent {
 
   colDefs: ColDef<Aluno>[] = [
     { field: 'nome', headerName: 'Nome', filter: 'agTextColumnFilter', floatingFilter: true },
-    { field: 'data', headerName: 'Data', filter: 'agDateColumnFilter', floatingFilter: true },
+    {
+      field: 'data',
+      headerName: 'Data de Nascimento',
+      filter: 'agDateColumnFilter',
+      floatingFilter: true,
+      valueFormatter: params => {
+        if (!params.value) {
+          return '';
+        }
+        const date = new Date(params.value);
+        return date.toLocaleDateString('pt-BR');
+      }
+    },
     { field: 'telefone', headerName: 'Telefone', filter: 'agTextColumnFilter', floatingFilter: true },
     { field: 'nome_resp1', headerName: 'Nome Responsável', filter: 'agTextColumnFilter', floatingFilter: true },
     { field: 'telefone_resp1', headerName: 'Telefone Responsável', filter: 'agTextColumnFilter', floatingFilter: true },
