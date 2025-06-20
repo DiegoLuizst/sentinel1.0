@@ -26,6 +26,14 @@ export class UsuariosdetailsComponent implements OnInit {
   usuariosService = inject(UsuariosService);
   grupoService = inject(PermissaoGrupoService);
 
+  /**
+   * Função de comparação utilizada pelo select de grupos de permissão
+   * para que o valor seja selecionado corretamente ao editar um usuário.
+   */
+  compareGrupoFn(g1: PermissaoGrupo | null, g2: PermissaoGrupo | null): boolean {
+    return g1 !== null && g2 !== null ? g1.id === g2.id : g1 === g2;
+  }
+
   constructor() {
     const id = this.router.snapshot.params['id'];
     if (id > 0) {
