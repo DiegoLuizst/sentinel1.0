@@ -53,11 +53,7 @@ export class AlunosdetailsComponent {
     '',
     '',
     '',
-    '',
-    '',
-    '',
-    '',
-    '',
+    undefined,
     undefined
   );
   router = inject(ActivatedRoute);
