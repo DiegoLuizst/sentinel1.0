@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
@@ -6,6 +6,8 @@ import {ChangeDetectionStrategy} from '@angular/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { FileUploadModule } from 'primeng/fileupload';
+import { FileUpload } from 'primeng/fileupload';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { Aluno } from '../../../models/aluno';
@@ -14,7 +16,7 @@ import { AlunosService } from '../../../services/alunos.service';
 @Component({
   selector: 'app-alunosdetails',
   standalone: true,
-  imports: [CommonModule, MdbFormsModule, FormsModule, MatDatepickerModule, MatFormFieldModule, MatInputModule, MatDatepickerModule],
+  imports: [CommonModule, MdbFormsModule, FormsModule, MatDatepickerModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, FileUploadModule],
   templateUrl: './alunosdetails.component.html',
   styleUrl: './alunosdetails.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -64,8 +66,23 @@ export class AlunosdetailsComponent {
   router2 = inject(Router);
   alunosService = inject(AlunosService);
 
+  @ViewChild('fileUploader') fileUploader?: FileUpload;
+
   generos = ['Masculino', 'Feminino', 'Não Binário', 'Prefere não informar'];
   parentescos = ['Pai', 'Mãe', 'Responsável Legal', 'Avô/Avó', 'Tio/Tia'];
+
+  get uploadUrl(): string {
+    return `http://localhost:8080/alunos/upload/${this.aluno.id}`;
+  }
+
+  onUpload() {
+    Swal.fire({
+      title: 'Arquivos enviados com sucesso!',
+      icon: 'success',
+      confirmButtonText: 'Ok'
+    });
+    this.fileUploader?.clear();
+  }
 
   constructor() {
     const id = this.router.snapshot.params['id'];
