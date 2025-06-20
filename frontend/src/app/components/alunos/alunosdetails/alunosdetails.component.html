@@ -19,13 +19,13 @@
                   </mdb-form-control>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <mat-form-field>
-                      <mat-label>Data de nascimento</mat-label>
-                      <input matInput [matDatepicker]="picker" [(ngModel)]="aluno.data">
-                      <mat-hint>DD/MM/YYYY</mat-hint>
-                      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                      <mat-datepicker #picker></mat-datepicker>
-                    </mat-form-field>
+                  <mat-form-field>
+                    <mat-label>Data de nascimento</mat-label>
+                    <input matInput [matDatepicker]="picker" [(ngModel)]="aluno.data">
+                    <mat-hint>DD/MM/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
                 </div>
               </div>
               <div class="row mb-3">
@@ -41,6 +41,70 @@
                   <mdb-form-control>
                     <input mdbInput type="text" id="telefone" class="form-control" [(ngModel)]="aluno.telefone" />
                     <label mdbLabel class="form-label" for="telefone">Telefone</label>
+                  </mdb-form-control>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-6 mb-3">
+                  <mdb-form-control>
+                    <input mdbInput type="text" id="email" class="form-control" [(ngModel)]="aluno.email" />
+                    <label mdbLabel class="form-label" for="email">Email</label>
+                  </mdb-form-control>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-6 mb-3">
+                  <mdb-form-control>
+                    <input mdbInput type="text" id="cep" class="form-control" [(ngModel)]="aluno.cep" />
+                    <label mdbLabel class="form-label" for="cep">CEP</label>
+                  </mdb-form-control>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <mdb-form-control>
+                    <input mdbInput type="text" id="rua" class="form-control" [(ngModel)]="aluno.rua" />
+                    <label mdbLabel class="form-label" for="rua">Rua</label>
+                  </mdb-form-control>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-6 mb-3">
+                  <mdb-form-control>
+                    <input mdbInput type="text" id="numero" class="form-control" [(ngModel)]="aluno.numero" />
+                    <label mdbLabel class="form-label" for="numero">Número</label>
+                  </mdb-form-control>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <mdb-form-control>
+                    <input mdbInput type="text" id="complemento" class="form-control" [(ngModel)]="aluno.complemento" />
+                    <label mdbLabel class="form-label" for="complemento">Complemento</label>
+                  </mdb-form-control>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-6 mb-3">
+                  <mdb-form-control>
+                    <input mdbInput type="text" id="bairro" class="form-control" [(ngModel)]="aluno.bairro" />
+                    <label mdbLabel class="form-label" for="bairro">Bairro</label>
+                  </mdb-form-control>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <mdb-form-control>
+                    <input mdbInput type="text" id="cidade" class="form-control" [(ngModel)]="aluno.cidade" />
+                    <label mdbLabel class="form-label" for="cidade">Cidade</label>
+                  </mdb-form-control>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-6 mb-3">
+                  <mdb-form-control>
+                    <input mdbInput type="text" id="estado" class="form-control" [(ngModel)]="aluno.estado" />
+                    <label mdbLabel class="form-label" for="estado">Estado</label>
+                  </mdb-form-control>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <mdb-form-control>
+                    <input mdbInput type="text" id="turma" class="form-control" [ngModel]="aluno.turma?.nome" disabled />
+                    <label mdbLabel class="form-label" for="turma">Turma</label>
                   </mdb-form-control>
                 </div>
               </div>
@@ -62,6 +126,68 @@
                 </div>
               </div>
               <div class="row mb-3">
+                <div class="col-md-6 mb-3">
+                  <mdb-form-control>
+                    <input mdbInput type="text" id="email_resp1" class="form-control" [(ngModel)]="aluno.email_resp1" />
+                    <label mdbLabel class="form-label" for="email_resp1">Email</label>
+                  </mdb-form-control>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <mdb-form-control>
+                    <input mdbInput type="text" id="cpf_resp1" class="form-control" [(ngModel)]="aluno.cpf_resp1" />
+                    <label mdbLabel class="form-label" for="cpf_resp1">CPF</label>
+                  </mdb-form-control>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-6 mb-3">
+                  <mdb-form-control>
+                    <input mdbInput type="text" id="cep_resp1" class="form-control" [(ngModel)]="aluno.cep_resp1" />
+                    <label mdbLabel class="form-label" for="cep_resp1">CEP</label>
+                  </mdb-form-control>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <mdb-form-control>
+                    <input mdbInput type="text" id="rua_resp1" class="form-control" [(ngModel)]="aluno.rua_resp1" />
+                    <label mdbLabel class="form-label" for="rua_resp1">Rua</label>
+                  </mdb-form-control>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-6 mb-3">
+                  <mdb-form-control>
+                    <input mdbInput type="text" id="numero_resp1" class="form-control" [(ngModel)]="aluno.numero_resp1" />
+                    <label mdbLabel class="form-label" for="numero_resp1">Número</label>
+                  </mdb-form-control>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <mdb-form-control>
+                    <input mdbInput type="text" id="complemento_resp1" class="form-control" [(ngModel)]="aluno.complemento_resp1" />
+                    <label mdbLabel class="form-label" for="complemento_resp1">Complemento</label>
+                  </mdb-form-control>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-6 mb-3">
+                  <mdb-form-control>
+                    <input mdbInput type="text" id="bairro_resp1" class="form-control" [(ngModel)]="aluno.bairro_resp1" />
+                    <label mdbLabel class="form-label" for="bairro_resp1">Bairro</label>
+                  </mdb-form-control>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <mdb-form-control>
+                    <input mdbInput type="text" id="cidade_resp1" class="form-control" [(ngModel)]="aluno.cidade_resp1" />
+                    <label mdbLabel class="form-label" for="cidade_resp1">Cidade</label>
+                  </mdb-form-control>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-6 mb-3">
+                  <mdb-form-control>
+                    <input mdbInput type="text" id="estado_resp1" class="form-control" [(ngModel)]="aluno.estado_resp1" />
+                    <label mdbLabel class="form-label" for="estado_resp1">Estado</label>
+                  </mdb-form-control>
+                </div>
                 <div class="col-md-6 mb-3">
                   <mdb-form-control>
                     <select mdbInput class="form-control" [(ngModel)]="aluno.parentesco_resp1">
@@ -88,7 +214,69 @@
                   </mdb-form-control>
                 </div>
               </div>
+              <div class="row mb-3">
+                <div class="col-md-6 mb-3">
+                  <mdb-form-control>
+                    <input mdbInput type="text" id="email_resp2" class="form-control" [(ngModel)]="aluno.email_resp2" />
+                    <label mdbLabel class="form-label" for="email_resp2">Email</label>
+                  </mdb-form-control>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <mdb-form-control>
+                    <input mdbInput type="text" id="cpf_resp2" class="form-control" [(ngModel)]="aluno.cpf_resp2" />
+                    <label mdbLabel class="form-label" for="cpf_resp2">CPF</label>
+                  </mdb-form-control>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-6 mb-3">
+                  <mdb-form-control>
+                    <input mdbInput type="text" id="cep_resp2" class="form-control" [(ngModel)]="aluno.cep_resp2" />
+                    <label mdbLabel class="form-label" for="cep_resp2">CEP</label>
+                  </mdb-form-control>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <mdb-form-control>
+                    <input mdbInput type="text" id="rua_resp2" class="form-control" [(ngModel)]="aluno.rua_resp2" />
+                    <label mdbLabel class="form-label" for="rua_resp2">Rua</label>
+                  </mdb-form-control>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-6 mb-3">
+                  <mdb-form-control>
+                    <input mdbInput type="text" id="numero_resp2" class="form-control" [(ngModel)]="aluno.numero_resp2" />
+                    <label mdbLabel class="form-label" for="numero_resp2">Número</label>
+                  </mdb-form-control>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <mdb-form-control>
+                    <input mdbInput type="text" id="complemento_resp2" class="form-control" [(ngModel)]="aluno.complemento_resp2" />
+                    <label mdbLabel class="form-label" for="complemento_resp2">Complemento</label>
+                  </mdb-form-control>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-6 mb-3">
+                  <mdb-form-control>
+                    <input mdbInput type="text" id="bairro_resp2" class="form-control" [(ngModel)]="aluno.bairro_resp2" />
+                    <label mdbLabel class="form-label" for="bairro_resp2">Bairro</label>
+                  </mdb-form-control>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <mdb-form-control>
+                    <input mdbInput type="text" id="cidade_resp2" class="form-control" [(ngModel)]="aluno.cidade_resp2" />
+                    <label mdbLabel class="form-label" for="cidade_resp2">Cidade</label>
+                  </mdb-form-control>
+                </div>
+              </div>
               <div class="row mb-4">
+                <div class="col-md-6 mb-3">
+                  <mdb-form-control>
+                    <input mdbInput type="text" id="estado_resp2" class="form-control" [(ngModel)]="aluno.estado_resp2" />
+                    <label mdbLabel class="form-label" for="estado_resp2">Estado</label>
+                  </mdb-form-control>
+                </div>
                 <div class="col-md-6 mb-3">
                   <mdb-form-control>
                     <select mdbInput class="form-control" [(ngModel)]="aluno.parentesco_resp2">

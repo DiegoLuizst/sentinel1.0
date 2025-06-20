@@ -65,7 +65,7 @@ export class AlunosdetailsComponent {
   alunosService = inject(AlunosService);
 
   generos = ['Masculino', 'Feminino', 'Não Binário', 'Prefere não informar'];
-  parentescos = ['Pai', 'Mãe', 'Responsável', 'Avô/Avó', 'Tio/Tia'];
+  parentescos = ['Pai', 'Mãe', 'Responsável Legal', 'Avô/Avó', 'Tio/Tia'];
 
   constructor() {
     const id = this.router.snapshot.params['id'];
