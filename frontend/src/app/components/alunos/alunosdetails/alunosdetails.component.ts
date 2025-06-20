@@ -20,7 +20,47 @@ import { AlunosService } from '../../../services/alunos.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AlunosdetailsComponent {
-  aluno: Aluno = new Aluno({ data: null });
+  aluno: Aluno = new Aluno(
+    '',
+    null,
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    undefined,
+    undefined
+  );
   router = inject(ActivatedRoute);
   router2 = inject(Router);
   alunosService = inject(AlunosService);
@@ -38,7 +78,7 @@ export class AlunosdetailsComponent {
   findById(id: number) {
     this.alunosService.findById(id).subscribe({
       next: retorno => {
-        this.aluno = new Aluno(retorno);
+        this.aluno = retorno;
       },
       error: () => {
         Swal.fire({
