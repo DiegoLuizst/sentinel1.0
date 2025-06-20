@@ -4,9 +4,18 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideHttpClient } from '@angular/common/http';
+import { provideNativeDateAdapter } from '@angular/material/core';
+import { provideMatDatepicker } from '@angular/material/datepicker';
 
 
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideAnimations(), provideHttpClient()]
+  providers: [
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(routes),
+    provideAnimations(),
+    provideHttpClient(),
+    provideMatDatepicker(),
+    provideNativeDateAdapter()
+  ]
 };
