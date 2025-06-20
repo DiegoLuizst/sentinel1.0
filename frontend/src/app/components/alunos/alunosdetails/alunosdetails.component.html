@@ -19,10 +19,13 @@
                   </mdb-form-control>
                 </div>
                 <div class="col-md-6 mb-3">
-                  <mdb-form-control>
-                    <mdb-datepicker [(ngModel)]="aluno.data" id="data"></mdb-datepicker>
-                    <label mdbLabel class="form-label" for="data">Data de Nascimento</label>
-                  </mdb-form-control>
+                    <mat-form-field>
+                      <mat-label>Data de nascimento</mat-label>
+                      <input matInput [matDatepicker]="picker" [(ngModel)]="aluno.data">
+                      <mat-hint>DD/MM/YYYY</mat-hint>
+                      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
                 </div>
               </div>
               <div class="row mb-3">

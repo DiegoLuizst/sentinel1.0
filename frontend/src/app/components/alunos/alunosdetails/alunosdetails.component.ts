@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
-import { MdbDatepickerModule } from 'mdb-angular-ui-kit/datepicker';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { Aluno } from '../../../models/aluno';
@@ -10,7 +10,7 @@ import { AlunosService } from '../../../services/alunos.service';
 @Component({
   selector: 'app-alunosdetails',
   standalone: true,
-  imports: [MdbFormsModule, FormsModule, MdbDatepickerModule],
+  imports: [MdbFormsModule, FormsModule, MatDatepickerModule],
   templateUrl: './alunosdetails.component.html',
   styleUrl: './alunosdetails.component.css'
 })

@@ -16,15 +16,15 @@ export class AlunosService {
   }
 
   delete(id: number): Observable<string> {
-    return this.http.delete(this.API + '/delete/' + id, { responseType: 'text' as 'json' });
+    return this.http.delete<string>(this.API + '/delete/' + id, { responseType: 'text' as 'json' });
   }
 
   save(aluno: Aluno): Observable<string> {
-    return this.http.post(this.API + '/save', aluno, { responseType: 'text' as 'json' });
+    return this.http.post<string>(this.API + '/save', aluno, { responseType: 'text' as 'json' });
   }
 
   update(aluno: Aluno): Observable<string> {
-    return this.http.put(this.API + '/update', aluno, { responseType: 'text' as 'json' });
+    return this.http.put<string>(this.API + '/update', aluno, { responseType: 'text' as 'json' });
   }
 
   findById(id: number): Observable<Aluno> {
