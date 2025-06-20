@@ -1,11 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import {ChangeDetectionStrategy} from '@angular/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {provideNativeDateAdapter} from '@angular/material/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { Aluno } from '../../../models/aluno';
@@ -14,7 +14,7 @@ import { AlunosService } from '../../../services/alunos.service';
 @Component({
   selector: 'app-alunosdetails',
   standalone: true,
-  imports: [MdbFormsModule, FormsModule, MatDatepickerModule, MatFormFieldModule, MatInputModule, MatDatepickerModule],
+  imports: [CommonModule, MdbFormsModule, FormsModule, MatDatepickerModule, MatFormFieldModule, MatInputModule, MatDatepickerModule],
   templateUrl: './alunosdetails.component.html',
   styleUrl: './alunosdetails.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
