@@ -2,7 +2,6 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
-import {ChangeDetectionStrategy} from '@angular/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -16,8 +15,7 @@ import { AlunosService } from '../../../services/alunos.service';
   standalone: true,
   imports: [CommonModule, MdbFormsModule, FormsModule, MatDatepickerModule, MatFormFieldModule, MatInputModule, MatDatepickerModule],
   templateUrl: './alunosdetails.component.html',
-  styleUrl: './alunosdetails.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrl: './alunosdetails.component.css'
 })
 export class AlunosdetailsComponent {
   aluno: Aluno = new Aluno(
