@@ -31,7 +31,7 @@
                 </div>
                 <div class="col-md-6 mb-3">
                   <mdb-form-control>
-                    <select mdbSelect class="form-select" [(ngModel)]="usuario.permissaoGrupo" [ngModelOptions]="{standalone: true}">
+                    <select mdbInput class="form-select" [(ngModel)]="usuario.permissaoGrupo" [ngModelOptions]="{standalone: true}">
                       <option *ngFor="let g of grupos" [ngValue]="g">{{ g.nome }}</option>
                     </select>
                     <label mdbLabel class="form-label" for="permissao">Permissão</label>

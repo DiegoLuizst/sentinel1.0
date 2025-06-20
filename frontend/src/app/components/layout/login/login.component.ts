@@ -2,10 +2,11 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
+import { MdbRippleModule } from 'mdb-angular-ui-kit/ripple';
 
 @Component({
   selector: 'app-login',
-  imports: [MdbFormsModule, FormsModule],
+  imports: [MdbFormsModule, MdbRippleModule, FormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })

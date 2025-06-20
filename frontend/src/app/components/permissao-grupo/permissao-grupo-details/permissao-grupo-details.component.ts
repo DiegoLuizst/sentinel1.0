@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
+import { MdbRippleModule } from 'mdb-angular-ui-kit/ripple';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { PermissaoGrupo } from '../../../models/permissao-grupo';
@@ -9,7 +10,7 @@ import { PermissaoGrupoService } from '../../../services/permissao-grupo.service
 @Component({
   selector: 'app-permissao-grupo-details',
   standalone: true,
-  imports: [MdbFormsModule, FormsModule],
+  imports: [MdbFormsModule, MdbRippleModule, FormsModule],
   templateUrl: './permissao-grupo-details.component.html',
   styleUrl: './permissao-grupo-details.component.css'
 })
