@@ -81,6 +81,9 @@ export class TurmaslistComponent {
       cellRenderer: (params: any) => {
         const turma = params.data;
         return `
+          <button type="button" class="btn btn-info btn-rounded btn-sm btn-icon" data-action="view" data-id="${turma.id}">
+            <i class="fas fa-eye"></i>
+          </button>
           <button type="button" class="btn btn-warning btn-rounded btn-sm btn-icon" data-action="edit" data-id="${turma.id}">
             <i class="fas fa-edit"></i>
           </button>
@@ -121,6 +124,8 @@ export class TurmaslistComponent {
 
         if (action === 'edit') {
           this.router.navigate(['/admin/turmas/edit', id]);
+        } else if (action === 'view') {
+          this.viewById(Number(id));
         } else if (action === 'delete') {
           this.deleteById(Number(id));
         }
@@ -150,6 +155,23 @@ export class TurmaslistComponent {
     setTimeout(() => {
       params.api.sizeColumnsToFit();
     }, 50);
+  }
+
+  viewById(id: number) {
+    const turma = this.rowData.find(t => t.id === id);
+    if (turma) {
+      Swal.fire({
+        title: 'Turma',
+        html: `
+          <p><strong>Nome:</strong> ${turma.nome}</p>
+          <p><strong>Ano:</strong> ${turma.ano}</p>
+          <p><strong>Turno:</strong> ${turma.turno}</p>
+          <p><strong>Sala:</strong> ${turma.sala}</p>
+          <p><strong>Nível:</strong> ${turma.nivel}</p>
+        `,
+        icon: 'info'
+      });
+    }
   }
 
   deleteById(id: number) {

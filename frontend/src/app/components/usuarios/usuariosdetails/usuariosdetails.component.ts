@@ -1,6 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
+import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { Usuario } from '../../../models/usuario';
@@ -11,7 +12,7 @@ import { PermissaoGrupoService } from '../../../services/permissao-grupo.service
 @Component({
   selector: 'app-usuariosdetails',
   standalone: true,
-  imports: [MdbFormsModule, FormsModule],
+  imports: [CommonModule, MdbFormsModule, FormsModule],
   templateUrl: './usuariosdetails.component.html',
   styleUrl: './usuariosdetails.component.css'
 })

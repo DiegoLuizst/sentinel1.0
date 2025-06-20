@@ -62,6 +62,9 @@ export class AlunoslistComponent {
       cellRenderer: (params: any) => {
         const aluno = params.data;
         return `
+          <button type="button" class="btn btn-info btn-rounded btn-sm btn-icon" data-action="view" data-id="${aluno.id}">
+            <i class="fas fa-eye"></i>
+          </button>
           <button type="button" class="btn btn-warning btn-rounded btn-sm btn-icon" data-action="edit" data-id="${aluno.id}">
             <i class="fas fa-edit"></i>
           </button>
@@ -100,6 +103,8 @@ export class AlunoslistComponent {
         const id = button.getAttribute('data-id');
         if (action === 'edit') {
           this.router.navigate(['/admin/alunos/edit', id]);
+        } else if (action === 'view') {
+          this.viewById(Number(id));
         } else if (action === 'delete') {
           this.deleteById(Number(id));
         }
@@ -127,6 +132,24 @@ export class AlunoslistComponent {
     setTimeout(() => {
       params.api.sizeColumnsToFit();
     }, 50);
+  }
+
+  viewById(id: number) {
+    const aluno = this.rowData.find(a => a.id === id);
+    if (aluno) {
+      const dataNasc = aluno.data ? new Date(aluno.data).toLocaleDateString('pt-BR') : '';
+      Swal.fire({
+        title: 'Aluno',
+        html: `
+          <p><strong>Nome:</strong> ${aluno.nome}</p>
+          <p><strong>Data de Nascimento:</strong> ${dataNasc}</p>
+          <p><strong>Telefone:</strong> ${aluno.telefone}</p>
+          <p><strong>Nome Responsável:</strong> ${aluno.nome_resp1}</p>
+          <p><strong>Parentesco:</strong> ${aluno.parentesco_resp1}</p>
+        `,
+        icon: 'info'
+      });
+    }
   }
 
   deleteById(id: number) {
