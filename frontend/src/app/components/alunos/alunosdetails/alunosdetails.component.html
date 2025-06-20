@@ -287,6 +287,9 @@
                 </div>
               </div>
 
+              <h6 class="mb-3">Documentos</h6>
+              <p-fileupload #fileUploader name="files" [url]="uploadUrl" [multiple]="true" [disabled]="!aluno.id" mode="advanced" (onUpload)="onUpload()"></p-fileupload>
+
               <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
                 <button type="button" class="btn btn-warning btn-rounded" mdbRipple (click)="save()">
                   <i class="fas fa-save me-2"></i>Salvar
