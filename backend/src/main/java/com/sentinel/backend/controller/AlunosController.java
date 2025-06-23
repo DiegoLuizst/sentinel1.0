@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -54,11 +54,12 @@ public class AlunosController {
     public ResponseEntity<Aluno> findById(@PathVariable long id) {
         log.info("Finding aluno with id {}", id);
         try {
-            Aluno aluno = as.findById(id);
-            log.info("Aluno {} found", id);
-            return new ResponseEntity<>(aluno, HttpStatus.OK);
-        } catch (NoSuchElementException e) {
-            log.error("Aluno {} not found", id, e);
+            Optional<Aluno> optAluno = as.findById(id);
+            if (optAluno.isPresent()) {
+                log.info("Aluno {} found", id);
+                return new ResponseEntity<>(optAluno.get(), HttpStatus.OK);
+            }
+            log.warn("Aluno {} not found", id);
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         } catch (Exception e) {
             log.error("Error retrieving aluno {}", id, e);

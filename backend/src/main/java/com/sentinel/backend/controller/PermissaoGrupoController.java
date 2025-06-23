@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -54,11 +54,12 @@ public class PermissaoGrupoController {
     public ResponseEntity<PermissaoGrupo> findById(@PathVariable long id) {
         log.info("Finding permissaoGrupo with id {}", id);
         try {
-            PermissaoGrupo pg = pgs.findById(id);
-            log.info("PermissaoGrupo {} found", id);
-            return new ResponseEntity<>(pg, HttpStatus.OK);
-        } catch (NoSuchElementException e) {
-            log.error("PermissaoGrupo {} not found", id, e);
+            Optional<PermissaoGrupo> pg = pgs.findById(id);
+            if (pg.isPresent()) {
+                log.info("PermissaoGrupo {} found", id);
+                return new ResponseEntity<>(pg.get(), HttpStatus.OK);
+            }
+            log.warn("PermissaoGrupo {} not found", id);
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         } catch (Exception e) {
             log.error("Error retrieving permissaoGrupo {}", id, e);

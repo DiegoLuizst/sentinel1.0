@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -67,11 +67,10 @@ public class TurmasService {
         return new ResponseEntity<>(rm, HttpStatus.OK);
     }
 
-    public Turma findById(long id) {
+    public Optional<Turma> findById(long id) {
         log.debug("Fetching turma id {}", id);
-        Turma turma = this.tr.findById(id)
-            .orElseThrow(() -> new NoSuchElementException("Turma não encontrada"));
-        log.debug("Fetched turma id {}", id);
+        Optional<Turma> turma = this.tr.findById(id);
+        turma.ifPresent(t -> log.debug("Fetched turma id {}", id));
         return turma;
 
     }

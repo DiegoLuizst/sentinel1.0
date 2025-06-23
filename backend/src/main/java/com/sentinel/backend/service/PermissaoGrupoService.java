@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -51,11 +51,10 @@ public class PermissaoGrupoService {
         return new ResponseEntity<>(rm, HttpStatus.OK);
     }
 
-    public PermissaoGrupo findById(long id) {
+    public Optional<PermissaoGrupo> findById(long id) {
         log.debug("Fetching permissaoGrupo id {}", id);
-        PermissaoGrupo pg = pgr.findById(id)
-            .orElseThrow(() -> new NoSuchElementException("Grupo de permissão não encontrado"));
-        log.debug("Fetched permissaoGrupo id {}", id);
+        Optional<PermissaoGrupo> pg = pgr.findById(id);
+        pg.ifPresent(p -> log.debug("Fetched permissaoGrupo id {}", id));
         return pg;
     }
 }

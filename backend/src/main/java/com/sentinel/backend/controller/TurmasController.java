@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -58,12 +58,13 @@ public class TurmasController {
         log.info("Finding turma with id {}", id);
         try {
 
-            Turma turma = this.ts.findById(id);
-            log.info("Turma {} found", id);
-            return new ResponseEntity<>(turma, HttpStatus.OK);
+            Optional<Turma> turma = this.ts.findById(id);
+            if (turma.isPresent()) {
+                log.info("Turma {} found", id);
+                return new ResponseEntity<>(turma.get(), HttpStatus.OK);
+            }
 
-        } catch (NoSuchElementException e) {
-            log.error("Turma {} not found", id, e);
+            log.warn("Turma {} not found", id);
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         } catch (Exception e) {
             log.error("Error retrieving turma {}", id, e);
