@@ -5,11 +5,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import lombok.extern.slf4j.Slf4j;
+
 import com.sentinel.backend.entity.RespostaModelo;
 import com.sentinel.backend.entity.Usuario;
 import com.sentinel.backend.repository.UsuarioRepository;
 
 @Service
+@Slf4j
 public class UsuarioService {
 
     @Autowired
@@ -56,6 +59,9 @@ public class UsuarioService {
     }
 
     public Usuario findById(long id) {
-        return ur.findById(id).get();
+        log.debug("Fetching usuario id {}", id);
+        Usuario usuario = ur.findById(id).get();
+        log.debug("Fetched usuario id {}", id);
+        return usuario;
     }
 }

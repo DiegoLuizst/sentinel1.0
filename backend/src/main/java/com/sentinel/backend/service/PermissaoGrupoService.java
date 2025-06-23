@@ -5,11 +5,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import lombok.extern.slf4j.Slf4j;
+
 import com.sentinel.backend.entity.PermissaoGrupo;
 import com.sentinel.backend.entity.RespostaModelo;
 import com.sentinel.backend.repository.PermissaoGrupoRepository;
 
 @Service
+@Slf4j
 public class PermissaoGrupoService {
 
     @Autowired
@@ -47,6 +50,9 @@ public class PermissaoGrupoService {
     }
 
     public PermissaoGrupo findById(long id) {
-        return pgr.findById(id).get();
+        log.debug("Fetching permissaoGrupo id {}", id);
+        PermissaoGrupo pg = pgr.findById(id).get();
+        log.debug("Fetched permissaoGrupo id {}", id);
+        return pg;
     }
 }

@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.extern.slf4j.Slf4j;
+
 import com.sentinel.backend.entity.PermissaoGrupo;
 import com.sentinel.backend.entity.RespostaModelo;
 import com.sentinel.backend.service.PermissaoGrupoService;
@@ -20,6 +22,7 @@ import com.sentinel.backend.service.PermissaoGrupoService;
 @RestController
 @RequestMapping("/permissao")
 @CrossOrigin("*")
+@Slf4j
 public class PermissaoGrupoController {
 
     @Autowired
@@ -47,10 +50,13 @@ public class PermissaoGrupoController {
 
     @GetMapping("/findById/{id}")
     public ResponseEntity<PermissaoGrupo> findById(@PathVariable long id) {
+        log.info("Finding permissaoGrupo with id {}", id);
         try {
             PermissaoGrupo pg = pgs.findById(id);
+            log.info("PermissaoGrupo {} found", id);
             return new ResponseEntity<>(pg, HttpStatus.OK);
         } catch (Exception e) {
+            log.error("Error retrieving permissaoGrupo {}", id, e);
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
