@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -51,11 +51,10 @@ public class AlunoService {
         return new ResponseEntity<>(rm, HttpStatus.OK);
     }
 
-    public Aluno findById(long id) {
+    public Optional<Aluno> findById(long id) {
         log.debug("Fetching aluno id {}", id);
-        Aluno aluno = ar.findById(id)
-            .orElseThrow(() -> new NoSuchElementException("Aluno não encontrado"));
-        log.debug("Fetched aluno id {}", id);
+        Optional<Aluno> aluno = ar.findById(id);
+        aluno.ifPresent(a -> log.debug("Fetched aluno id {}", id));
         return aluno;
     }
 }
