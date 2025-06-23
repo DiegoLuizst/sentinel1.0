@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.extern.slf4j.Slf4j;
+
 import com.sentinel.backend.entity.Aluno;
 import com.sentinel.backend.entity.RespostaModelo;
 import com.sentinel.backend.service.AlunoService;
@@ -20,6 +22,7 @@ import com.sentinel.backend.service.AlunoService;
 @RestController
 @RequestMapping("/alunos")
 @CrossOrigin("*")
+@Slf4j
 public class AlunosController {
 
     @Autowired
@@ -47,10 +50,13 @@ public class AlunosController {
 
     @GetMapping("/findById/{id}")
     public ResponseEntity<Aluno> findById(@PathVariable long id) {
+        log.info("Finding aluno with id {}", id);
         try {
             Aluno aluno = as.findById(id);
+            log.info("Aluno {} found", id);
             return new ResponseEntity<>(aluno, HttpStatus.OK);
         } catch (Exception e) {
+            log.error("Error retrieving aluno {}", id, e);
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }

@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.extern.slf4j.Slf4j;
+
 import com.sentinel.backend.entity.RespostaModelo;
 import com.sentinel.backend.entity.Usuario;
 import com.sentinel.backend.service.UsuarioService;
@@ -20,6 +22,7 @@ import com.sentinel.backend.service.UsuarioService;
 @RestController
 @RequestMapping("/usuarios")
 @CrossOrigin("*")
+@Slf4j
 public class UsuariosController {
 
     @Autowired
@@ -47,10 +50,13 @@ public class UsuariosController {
 
     @GetMapping("/findById/{id}")
     public ResponseEntity<Usuario> findById(@PathVariable long id) {
+        log.info("Finding usuario with id {}", id);
         try {
             Usuario usuario = us.findById(id);
+            log.info("Usuario {} found", id);
             return new ResponseEntity<>(usuario, HttpStatus.OK);
         } catch (Exception e) {
+            log.error("Error retrieving usuario {}", id, e);
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
