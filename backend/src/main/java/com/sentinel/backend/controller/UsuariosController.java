@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.NoSuchElementException;
+
 import lombok.extern.slf4j.Slf4j;
 
 import com.sentinel.backend.entity.RespostaModelo;
@@ -55,6 +57,9 @@ public class UsuariosController {
             Usuario usuario = us.findById(id);
             log.info("Usuario {} found", id);
             return new ResponseEntity<>(usuario, HttpStatus.OK);
+        } catch (NoSuchElementException e) {
+            log.error("Usuario {} not found", id, e);
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         } catch (Exception e) {
             log.error("Error retrieving usuario {}", id, e);
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);

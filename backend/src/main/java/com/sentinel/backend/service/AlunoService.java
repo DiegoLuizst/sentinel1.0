@@ -5,6 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.NoSuchElementException;
+
 import lombok.extern.slf4j.Slf4j;
 
 import com.sentinel.backend.entity.Aluno;
@@ -51,7 +53,8 @@ public class AlunoService {
 
     public Aluno findById(long id) {
         log.debug("Fetching aluno id {}", id);
-        Aluno aluno = ar.findById(id).get();
+        Aluno aluno = ar.findById(id)
+            .orElseThrow(() -> new NoSuchElementException("Aluno não encontrado"));
         log.debug("Fetched aluno id {}", id);
         return aluno;
     }
