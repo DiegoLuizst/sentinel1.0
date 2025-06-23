@@ -95,22 +95,28 @@ export class AlunoslistComponent {
     this.findAll();
   }
 
-  ngAfterViewInit() {
-    document.addEventListener('click', (event) => {
-      const target = event.target as HTMLElement;
-      const button = target.closest('button[data-action]');
-      if (button) {
-        const action = button.getAttribute('data-action');
-        const id = button.getAttribute('data-id');
-        if (action === 'edit') {
-          this.router.navigate(['/admin/alunos/edit', id]);
-        } else if (action === 'view') {
-          this.viewById(Number(id));
-        } else if (action === 'delete') {
-          this.deleteById(Number(id));
-        }
+  private clickListener = (event: Event) => {
+    const target = event.target as HTMLElement;
+    const button = target.closest('button[data-action]');
+    if (button) {
+      const action = button.getAttribute('data-action');
+      const id = button.getAttribute('data-id');
+      if (action === 'edit') {
+        this.router.navigate(['/admin/alunos/edit', id]);
+      } else if (action === 'view') {
+        this.viewById(Number(id));
+      } else if (action === 'delete') {
+        this.deleteById(Number(id));
       }
-    });
+    }
+  };
+
+  ngAfterViewInit() {
+    document.addEventListener('click', this.clickListener);
+  }
+
+  ngOnDestroy() {
+    document.removeEventListener('click', this.clickListener);
   }
 
   findAll() {
