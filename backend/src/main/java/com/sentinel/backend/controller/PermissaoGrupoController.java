@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.NoSuchElementException;
+
 import lombok.extern.slf4j.Slf4j;
 
 import com.sentinel.backend.entity.PermissaoGrupo;
@@ -55,6 +57,9 @@ public class PermissaoGrupoController {
             PermissaoGrupo pg = pgs.findById(id);
             log.info("PermissaoGrupo {} found", id);
             return new ResponseEntity<>(pg, HttpStatus.OK);
+        } catch (NoSuchElementException e) {
+            log.error("PermissaoGrupo {} not found", id, e);
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         } catch (Exception e) {
             log.error("Error retrieving permissaoGrupo {}", id, e);
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
