@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
-import jwtDecode from 'jwt-decode';
+import { jwtDecode, JwtPayload } from 'jwt-decode';
 
 
 import { Login } from './login';
@@ -35,16 +35,16 @@ export class LoginService {
     return localStorage.getItem('token');
   }
 
-  jwtDecode() {
-    let token = this.getToken();
+  decodeToken(): JwtPayload | null {
+    const token = this.getToken();
     if (token) {
       return jwtDecode<JwtPayload>(token);
     }
-    return "";
+    return null;
   }
 
   hasRole(role: string) {
-    let user = this.jwtDecode() as Usuario;
+    const user = this.decodeToken() as unknown as Usuario;
     if (user.permissaoGrupo == null)
       return true;
     else
@@ -52,7 +52,7 @@ export class LoginService {
   }
 
   getUsuarioLogado() {
-    return this.jwtDecode() as Usuario;
+    return this.decodeToken() as unknown as Usuario;
   }
 
 
