@@ -1,11 +1,13 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { MdbRippleModule } from 'mdb-angular-ui-kit/ripple';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { PermissaoGrupo } from '../../../models/permissao-grupo';
+import { PermissaoPagina } from '../../../models/permissao-pagina';
 import { PermissaoGrupoService } from '../../../services/permissao-grupo.service';
+import { PermissaoPaginaService } from '../../../services/permissao-pagina.service';
 
 @Component({
   selector: 'app-permissao-grupo-details',
@@ -14,17 +16,45 @@ import { PermissaoGrupoService } from '../../../services/permissao-grupo.service
   templateUrl: './permissao-grupo-details.component.html',
   styleUrl: './permissao-grupo-details.component.css'
 })
-export class PermissaoGrupoDetailsComponent {
+export class PermissaoGrupoDetailsComponent implements OnInit {
 
   grupo: PermissaoGrupo = new PermissaoGrupo('');
+  permissoesPagina: PermissaoPagina[] = [];
   router = inject(ActivatedRoute);
   router2 = inject(Router);
   pgService = inject(PermissaoGrupoService);
+  ppService = inject(PermissaoPaginaService);
 
   constructor() {
     const id = this.router.snapshot.params['id'];
     if (id > 0) {
       this.findById(id);
+    }
+  }
+
+  ngOnInit(): void {
+    this.loadPermissoesPagina();
+  }
+
+  loadPermissoesPagina() {
+    this.ppService.findAll().subscribe({
+      next: lista => { this.permissoesPagina = lista; },
+      error: () => {
+        Swal.fire({ title: 'Ocorreu um erro!', icon: 'error', confirmButtonText: 'Ok' });
+      }
+    });
+  }
+
+  togglePermissao(perm: PermissaoPagina, checked: boolean) {
+    if (checked) {
+      if (!this.grupo.permissoes) {
+        this.grupo.permissoes = [];
+      }
+      if (!this.grupo.permissoes.find(p => p.id === perm.id)) {
+        this.grupo.permissoes.push(perm);
+      }
+    } else {
+      this.grupo.permissoes = this.grupo.permissoes.filter(p => p.id !== perm.id);
     }
   }
 
