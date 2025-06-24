@@ -36,6 +36,10 @@ export class PermissaoGrupoDetailsComponent implements OnInit {
     this.loadPermissoesPagina();
   }
 
+  isPermissaoSelecionada(perm: PermissaoPagina): boolean {
+    return this.grupo.permissoes?.some(pg => pg.id === perm.id) ?? false;
+  }
+
   loadPermissoesPagina() {
     this.ppService.findAll().subscribe({
       next: lista => { this.permissoesPagina = lista; },
