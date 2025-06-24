@@ -1,14 +1,11 @@
-.topo{
+.topo {
   top: 20vh;
   position: relative;
 }
 
-
 .fundo-login {
   background-image: url("../../../../../public/imagens/FundoLogin.png");
-
 }
-
 
 /* Película preta com opacidade */
 .overlay {
@@ -22,13 +19,12 @@
   z-index: 0;
 }
 
-
 .card {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* eixo-x, eixo-y, desfoque, cor */
 }
 
 h5 {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 22px;
   font-weight: 500;
   text-align: center;

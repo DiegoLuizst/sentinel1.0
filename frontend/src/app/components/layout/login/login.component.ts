@@ -3,6 +3,8 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { MdbRippleModule } from 'mdb-angular-ui-kit/ripple';
+import { LoginService } from '../../../auth/login.service';
+import { Login } from '../../../auth/login';
 
 @Component({
   selector: 'app-login',
@@ -11,18 +13,31 @@ import { MdbRippleModule } from 'mdb-angular-ui-kit/ripple';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-
-  email!: string;
-  senha!: string;
+  login: Login = new Login;
 
   router = inject(Router);
+  loginService = inject(LoginService);
 
   logar(){
-    if(this.email == 'admin' && this.senha == '123123') {
-      this.router.navigate(['admin/turmas']);
-    }else{
-      alert("Email ou senha incorretos!");
-    }
+
+    this.loginService.logar(this.login).subscribe({
+
+      next: token => {
+
+        if(token){
+          this.loginService.addToken(token);
+        }else{
+          alert('Email ou senha incorretos!')
+        }
+
+      },
+      error: erro => {
+        alert('ERRO');
+
+      }
+
+    });
+
   }
 
 }
