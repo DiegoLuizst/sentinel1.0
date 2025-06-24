@@ -17,7 +17,10 @@ import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
+import jakarta.persistence.Table;
+
+@Entity(name = "UsuarioAuth")
+@Table(name = "usuario_auth")
 @Getter
 @Setter
 public class Usuario implements UserDetails {
