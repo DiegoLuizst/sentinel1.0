@@ -16,6 +16,15 @@
                   </mdb-form-control>
                 </div>
               </div>
+              <div class="row mb-3">
+                <div class="col-md-12">
+                  <label class="form-label mb-2">Permissões de Página</label>
+                  <div class="form-check" *ngFor="let p of permissoesPagina">
+                    <input class="form-check-input" type="checkbox" [id]="'pag'+p.id" [checked]="grupo.permissoes?.some(pg => pg.id === p.id)" (change)="togglePermissao(p, $event.target.checked)" />
+                    <label class="form-check-label" [for]="'pag'+p.id">{{ p.nome }}</label>
+                  </div>
+                </div>
+              </div>
               <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
                 <button type="button" class="btn btn-warning btn-rounded" mdbRipple (click)="save()">
                   <i class="fas fa-save me-2"></i>Salvar
