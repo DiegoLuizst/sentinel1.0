@@ -13,6 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.sentinel.backend.repository.UsuarioRepository;
+import com.sentinel.backend.config.UsuarioDetails;
 
 @Configuration
 public class SecurityManager {
@@ -41,6 +42,7 @@ public class SecurityManager {
 	@Bean
        public UserDetailsService userDetailsService() {
                return username -> usuarioRepository.findByEmail(username)
+                               .map(UsuarioDetails::new)
                                .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado"));
        }
 
