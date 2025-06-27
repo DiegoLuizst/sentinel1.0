@@ -15,6 +15,7 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
@@ -37,16 +38,20 @@ public class SecurityConfig {
 						.requestMatchers("/api/register").permitAll()
 						.anyRequest().authenticated())
 				.authenticationProvider(authenticationProvider)
-				.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
-				.sessionManagement(customizer -> customizer.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+                               .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
+                               .addFilterAfter(permissionFilter, JwtAuthenticationFilter.class)
+                               .sessionManagement(customizer -> customizer.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
 		return http.build();
 	}
 
 	///////////////////////////////////////////////////////
 
-	@Autowired
-	private JwtAuthenticationFilter jwtAuthFilter;
+        @Autowired
+        private JwtAuthenticationFilter jwtAuthFilter;
+
+        @Autowired
+        private PermissionFilter permissionFilter;
 
 	@Autowired
 	private AuthenticationProvider authenticationProvider;
