@@ -41,7 +41,7 @@ public class SecurityManager {
 
 	@Bean
        public UserDetailsService userDetailsService() {
-               return username -> usuarioRepository.findByEmail(username)
+               return username -> usuarioRepository.findFirstByEmail(username)
                                .map(UsuarioDetails::new)
                                .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado"));
        }

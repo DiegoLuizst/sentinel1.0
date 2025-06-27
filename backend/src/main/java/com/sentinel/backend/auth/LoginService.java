@@ -33,7 +33,7 @@ public class LoginService {
 						login.getEmail(),
 						login.getSenha()));
                Usuario user = usuarioRepository
-                               .findByEmail(login.getEmail())
+                               .findFirstByEmail(login.getEmail())
                                .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado"));
 		String jwtToken = jwtService.generateToken(user);
 		return jwtToken;

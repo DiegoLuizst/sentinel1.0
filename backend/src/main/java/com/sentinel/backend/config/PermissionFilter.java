@@ -29,7 +29,7 @@ public class PermissionFilter extends OncePerRequestFilter {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null && auth.isAuthenticated()) {
             String email = auth.getName();
-            Usuario usuario = usuarioRepository.findByEmail(email).orElse(null);
+            Usuario usuario = usuarioRepository.findFirstByEmail(email).orElse(null);
             if (usuario != null && usuario.getPermissaoGrupo() != null) {
                 String path = request.getRequestURI();
                 String method = request.getMethod();
