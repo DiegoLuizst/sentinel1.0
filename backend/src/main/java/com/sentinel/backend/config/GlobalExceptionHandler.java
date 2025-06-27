@@ -10,8 +10,9 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
 
 @ControllerAdvice
@@ -27,15 +28,21 @@ public class GlobalExceptionHandler {
 		return new ResponseEntity<Map<String, String>>(erros, HttpStatus.BAD_REQUEST);
 	}
 
-	// TRATAMENTO DE ERROS DE VALIDATIONS
-	@ExceptionHandler(ConstraintViolationException.class)
-	public ResponseEntity<Map<String, String>> handle02(ConstraintViolationException ex) {
+        // TRATAMENTO DE ERROS DE VALIDATIONS
+        @ExceptionHandler(ConstraintViolationException.class)
+        public ResponseEntity<Map<String, String>> handle02(ConstraintViolationException ex) {
 		Map<String, String> erros = new HashMap<>();
 		for (ConstraintViolation<?> violation : ex.getConstraintViolations()) {
 			erros.put(violation.getPropertyPath().toString(), violation.getMessage());
 		}
-		return new ResponseEntity<Map<String, String>>(erros, HttpStatus.BAD_REQUEST);
-	}
+                return new ResponseEntity<Map<String, String>>(erros, HttpStatus.BAD_REQUEST);
+        }
+
+        // TRATAMENTO DE ERROS DE AUTENTICAÇÃO (LOGIN)
+        @ExceptionHandler({ BadCredentialsException.class, UsernameNotFoundException.class })
+        public ResponseEntity<String> handleCredenciaisInvalidas(Exception ex) {
+                return new ResponseEntity<String>("Usuário ou senha incorretos", HttpStatus.UNAUTHORIZED);
+        }
 
 	// TRATAMENTO DOS DEMAIS ERROS DA APLICAÇÃO E DE REGRAS DE NEGÓCIO
 	@ExceptionHandler(Exception.class)
