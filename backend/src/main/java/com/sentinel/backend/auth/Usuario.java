@@ -14,6 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Column;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,10 +28,13 @@ public class Usuario implements UserDetails {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	private String username;
-	private String password;
-	private String role;
+        private Long id;
+
+        @Column(unique = true, nullable = false)
+        private String username;
+
+        private String password;
+        private String role;
 
 	@Override
 	@JsonIgnore
