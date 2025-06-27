@@ -12,6 +12,8 @@ import lombok.extern.slf4j.Slf4j;
 import com.sentinel.backend.entity.RespostaModelo;
 import com.sentinel.backend.entity.Usuario;
 import com.sentinel.backend.repository.UsuarioRepository;
+import com.sentinel.backend.auth.LoginRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Service
 @Slf4j
@@ -19,6 +21,12 @@ public class UsuarioService {
 
     @Autowired
     private UsuarioRepository ur;
+
+    @Autowired
+    private LoginRepository loginRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     private RespostaModelo rm;
@@ -42,9 +50,26 @@ public class UsuarioService {
             return new ResponseEntity<>(rm, HttpStatus.BAD_REQUEST);
         }
 
+        usuario.setSenha(passwordEncoder.encode(usuario.getSenha()));
+
         if (acao.equalsIgnoreCase("cadastrar")) {
+            // cria registro de autenticação
+            com.sentinel.backend.auth.Usuario authUser = new com.sentinel.backend.auth.Usuario();
+            authUser.setUsername(usuario.getEmail());
+            authUser.setPassword(usuario.getSenha());
+            authUser.setRole(usuario.getPermissaoGrupo().getNome());
+            loginRepository.save(authUser);
+
             return new ResponseEntity<>(ur.save(usuario), HttpStatus.CREATED);
         } else {
+            // atualiza ou cria usuário de autenticação
+            com.sentinel.backend.auth.Usuario authUser = loginRepository.findByUsername(usuario.getEmail())
+                    .orElse(new com.sentinel.backend.auth.Usuario());
+            authUser.setUsername(usuario.getEmail());
+            authUser.setPassword(usuario.getSenha());
+            authUser.setRole(usuario.getPermissaoGrupo().getNome());
+            loginRepository.save(authUser);
+
             return new ResponseEntity<>(ur.save(usuario), HttpStatus.OK);
         }
     }
