@@ -50,11 +50,19 @@ public class SecurityConfig {
         @Autowired
         private JwtAuthenticationFilter jwtAuthFilter;
 
-        @Autowired
-        private PermissionFilter permissionFilter;
+       @Autowired
+       private PermissionFilter permissionFilter;
 
-	@Autowired
-	private AuthenticationProvider authenticationProvider;
+       @Autowired
+       private UsuarioRepository usuarioRepository;
+
+       @Bean(name = "permissionFilter")
+       public PermissionFilter permissionFilterBean() {
+               return new PermissionFilter(usuarioRepository);
+       }
+
+       @Autowired
+       private AuthenticationProvider authenticationProvider;
 
 	@Bean
 	public FilterRegistrationBean<CorsFilter> corsFilter() {
