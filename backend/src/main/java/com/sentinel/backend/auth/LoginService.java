@@ -7,12 +7,14 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.sentinel.backend.config.JwtServiceGenerator;
+import com.sentinel.backend.entity.Usuario;
+import com.sentinel.backend.repository.UsuarioRepository;
 
 @Service
 public class LoginService {
 
-	@Autowired
-	private LoginRepository repository;
+       @Autowired
+       private UsuarioRepository usuarioRepository;
 	@Autowired
 	private JwtServiceGenerator jwtService;
 	@Autowired
@@ -30,9 +32,9 @@ public class LoginService {
 				new UsernamePasswordAuthenticationToken(
 						login.getEmail(),
 						login.getSenha()));
-                Usuario user = repository
-                                .findByUsername(login.getEmail())
-                                .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado"));
+               Usuario user = usuarioRepository
+                               .findByEmail(login.getEmail())
+                               .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado"));
 		String jwtToken = jwtService.generateToken(user);
 		return jwtToken;
 	}

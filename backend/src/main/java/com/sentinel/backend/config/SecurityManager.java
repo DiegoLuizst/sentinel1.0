@@ -12,13 +12,13 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.sentinel.backend.auth.LoginRepository;
+import com.sentinel.backend.repository.UsuarioRepository;
 
 @Configuration
 public class SecurityManager {
 
 	@Autowired
-	private LoginRepository loginRepository;
+       private UsuarioRepository usuarioRepository;
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
@@ -39,9 +39,9 @@ public class SecurityManager {
 	}
 
 	@Bean
-	public UserDetailsService userDetailsService() {
-		return username -> loginRepository.findByUsername(username)
-				.orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado"));
-	}
+       public UserDetailsService userDetailsService() {
+               return username -> usuarioRepository.findByEmail(username)
+                               .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado"));
+       }
 
 }

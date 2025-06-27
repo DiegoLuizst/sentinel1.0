@@ -11,7 +11,7 @@ import java.util.function.Function;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-import com.sentinel.backend.auth.Usuario;
+import com.sentinel.backend.entity.Usuario;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -27,13 +27,15 @@ public class JwtServiceGenerator {
 	public static final SignatureAlgorithm ALGORITMO_ASSINATURA = SignatureAlgorithm.HS256;
 	public static final int HORAS_EXPIRACAO_TOKEN = 1;
 
-	public Map<String, Object> gerarPayload(Usuario usuario) {
+       public Map<String, Object> gerarPayload(Usuario usuario) {
 		// AQUI VOCÊ PODE COLOCAR O QUE MAIS VAI COMPOR O PAYLOAD DO TOKEN
 
 		Map<String, Object> payloadData = new HashMap<>();
-		payloadData.put("username", usuario.getUsername());
+               payloadData.put("username", usuario.getEmail());
 		payloadData.put("id", usuario.getId().toString());
-		payloadData.put("role", usuario.getRole());
+               if (usuario.getPermissaoGrupo() != null) {
+                       payloadData.put("role", usuario.getPermissaoGrupo().getNome());
+               }
 		payloadData.put("outracoisa", "teste");
 
 		return payloadData;
@@ -41,14 +43,14 @@ public class JwtServiceGenerator {
 
 	///////////////////////////////////////////////////////
 
-	public String generateToken(com.sentinel.backend.auth.Usuario usuario) {
+       public String generateToken(Usuario usuario) {
 
 		Map<String, Object> payloadData = this.gerarPayload(usuario);
 
 		return Jwts
 				.builder()
 				.setClaims(payloadData)
-				.setSubject(usuario.getUsername())
+                               .setSubject(usuario.getEmail())
 				.setIssuedAt(new Date(System.currentTimeMillis()))
 				.setExpiration(new Date(new Date().getTime() + 3600000 * this.HORAS_EXPIRACAO_TOKEN))
 				.signWith(getSigningKey(), this.ALGORITMO_ASSINATURA)
