@@ -3,6 +3,7 @@ package com.sentinel.backend.auth;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.sentinel.backend.config.JwtServiceGenerator;
@@ -29,7 +30,9 @@ public class LoginService {
 				new UsernamePasswordAuthenticationToken(
 						login.getEmail(),
 						login.getSenha()));
-		Usuario user = repository.findByUsername(login.getSenha()).get();
+                Usuario user = repository
+                                .findByUsername(login.getEmail())
+                                .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado"));
 		String jwtToken = jwtService.generateToken(user);
 		return jwtToken;
 	}
