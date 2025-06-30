@@ -54,16 +54,20 @@ export class UsuarioslistComponent {
       headerName: 'Ações',
       cellRenderer: (params: any) => {
         const usuario = params.data;
+        const editBtn = this.canEdit ?
+          `<button type="button" class="btn btn-warning btn-rounded btn-sm btn-icon" data-action="edit" data-id="${usuario.id}">
+            <i class="fas fa-edit"></i>
+          </button>` : '';
+        const delBtn = this.canDelete ?
+          `<button type="button" class="btn btn-danger btn-rounded btn-sm btn-icon" data-action="delete" data-id="${usuario.id}">
+            <i class="fas fa-trash-alt"></i>
+          </button>` : '';
         return `
           <button type="button" class="btn btn-info btn-rounded btn-sm btn-icon" data-action="view" data-id="${usuario.id}">
             <i class="fas fa-eye"></i>
           </button>
-          <button type="button" class="btn btn-warning btn-rounded btn-sm btn-icon" data-action="edit" data-id="${usuario.id}">
-            <i class="fas fa-edit"></i>
-          </button>
-          <button type="button" class="btn btn-danger btn-rounded btn-sm btn-icon" data-action="delete" data-id="${usuario.id}">
-            <i class="fas fa-trash-alt"></i>
-          </button>
+          ${editBtn}
+          ${delBtn}
         `;
       },
       sortable: false,
@@ -82,6 +86,10 @@ export class UsuarioslistComponent {
   rowData: Usuario[] = [];
   usuariosService = inject(UsuariosService);
   router = inject(Router);
+
+  get canAdd() { return this.usuariosService.hasPermission('/usuarios','POST'); }
+  get canEdit() { return this.usuariosService.hasPermission('/usuarios','PUT'); }
+  get canDelete() { return this.usuariosService.hasPermission('/usuarios','DELETE'); }
 
   constructor() {
     this.findAll();

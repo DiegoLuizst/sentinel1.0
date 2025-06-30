@@ -6,6 +6,7 @@ import { ColDef, GridApi, GridOptions, GridReadyEvent } from 'ag-grid-community'
 import { ModuleRegistry, AllCommunityModule } from 'ag-grid-community';
 import { Aluno } from '../../../models/aluno';
 import { AlunosService } from '../../../services/alunos.service';
+import { UsuariosService } from '../../../services/usuarios.service';
 import Swal from 'sweetalert2';
 
 ModuleRegistry.registerModules([AllCommunityModule]);
@@ -62,16 +63,20 @@ export class AlunoslistComponent {
       headerName: 'Ações',
       cellRenderer: (params: any) => {
         const aluno = params.data;
+        const editBtn = this.canEdit ?
+          `<button type="button" class="btn btn-warning btn-rounded btn-sm btn-icon" data-action="edit" data-id="${aluno.id}">
+            <i class="fas fa-edit"></i>
+          </button>` : '';
+        const delBtn = this.canDelete ?
+          `<button type="button" class="btn btn-danger btn-rounded btn-sm btn-icon" data-action="delete" data-id="${aluno.id}">
+            <i class="fas fa-trash-alt"></i>
+          </button>` : '';
         return `
           <button type="button" class="btn btn-info btn-rounded btn-sm btn-icon" data-action="view" data-id="${aluno.id}">
             <i class="fas fa-eye"></i>
           </button>
-          <button type="button" class="btn btn-warning btn-rounded btn-sm btn-icon" data-action="edit" data-id="${aluno.id}">
-            <i class="fas fa-edit"></i>
-          </button>
-          <button type="button" class="btn btn-danger btn-rounded btn-sm btn-icon" data-action="delete" data-id="${aluno.id}">
-            <i class="fas fa-trash-alt"></i>
-          </button>
+          ${editBtn}
+          ${delBtn}
         `;
       },
       sortable: false,
@@ -90,6 +95,19 @@ export class AlunoslistComponent {
   rowData: Aluno[] = [];
   alunosService = inject(AlunosService);
   router = inject(Router);
+  usuariosService = inject(UsuariosService);
+
+  get canAdd() {
+    return this.usuariosService.hasPermission('/alunos', 'POST');
+  }
+
+  get canEdit() {
+    return this.usuariosService.hasPermission('/alunos', 'PUT');
+  }
+
+  get canDelete() {
+    return this.usuariosService.hasPermission('/alunos', 'DELETE');
+  }
 
   constructor() {
     this.findAll();

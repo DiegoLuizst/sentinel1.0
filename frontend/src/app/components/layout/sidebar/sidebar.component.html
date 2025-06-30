@@ -24,22 +24,22 @@
     <div class="menu-section">
       <div class="section-title text-center">Cadastros</div>
         <ul class="navbar-nav">
-          <li class="nav-item">
+          <li class="nav-item" *ngIf="hasGet('/alunos')">
             <a class="nav-link" routerLink="/admin/alunos" routerLinkActive="active">
               <i class="fas fa-user-graduate"></i> Alunos
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" *ngIf="hasGet('/turmas')">
             <a class="nav-link" routerLink="/admin/turmas" routerLinkActive="active">
               <i class="fas fa-chalkboard"></i> Turmas
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" *ngIf="hasGet('/usuarios')">
             <a class="nav-link" routerLink="/admin/usuarios" routerLinkActive="active">
               <i class="fas fa-user"></i> Usuários
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" *ngIf="hasGet('/permissao')">
             <a class="nav-link" routerLink="/admin/permissao" routerLinkActive="active">
               <i class="fas fa-users-cog"></i> Permissão Grupo
             </a>
