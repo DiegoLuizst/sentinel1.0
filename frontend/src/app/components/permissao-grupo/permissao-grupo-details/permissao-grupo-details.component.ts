@@ -1,4 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { MdbRippleModule } from 'mdb-angular-ui-kit/ripple';
@@ -12,7 +13,7 @@ import { PermissaoPaginaService } from '../../../services/permissao-pagina.servi
 @Component({
   selector: 'app-permissao-grupo-details',
   standalone: true,
-  imports: [MdbFormsModule, MdbRippleModule, FormsModule],
+  imports: [CommonModule, MdbFormsModule, MdbRippleModule, FormsModule],
   templateUrl: './permissao-grupo-details.component.html',
   styleUrl: './permissao-grupo-details.component.css'
 })
