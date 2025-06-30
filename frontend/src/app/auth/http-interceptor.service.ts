@@ -8,10 +8,14 @@ export const meuhttpInterceptor: HttpInterceptorFn = (request, next) => {
 
   let router = inject(Router);
 
-  let token = localStorage.getItem('token');
-  
+  const token = localStorage.getItem('token');
+
   console.log('entrou aqui 1');
-  if (token) {
+  if (
+    token &&
+    !request.url.includes('/api/login') &&
+    !request.url.includes('/api/register')
+  ) {
     request = request.clone({
       setHeaders: { Authorization: 'Bearer ' + token },
     });
