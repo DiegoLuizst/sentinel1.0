@@ -24,7 +24,9 @@ export class LoginComponent {
       next: token => {
         if(token){
           this.usuariosService.addToken(token);
-          this.router.navigate(['/admin/turmas']);
+          this.usuariosService.loadUsuarioLogado().subscribe({
+            next: () => this.router.navigate(['/admin/turmas'])
+          });
         }
       },
       error: erro => {
