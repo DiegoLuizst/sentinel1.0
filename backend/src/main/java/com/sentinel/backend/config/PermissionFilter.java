@@ -33,6 +33,13 @@ public class PermissionFilter extends OncePerRequestFilter {
             if (usuario != null && usuario.getPermissaoGrupo() != null) {
                 String path = request.getRequestURI();
                 String method = request.getMethod();
+
+                // allow findById for all authenticated users
+                if (path.startsWith("/usuarios/findById") && method.equalsIgnoreCase("GET")) {
+                    filterChain.doFilter(request, response);
+                    return;
+                }
+
                 boolean allowed = usuario.getPermissaoGrupo().getPermissoes().stream()
                         .anyMatch(p -> path.startsWith(p.getRota()) && method.equalsIgnoreCase(p.getMetodoHttp()));
                 if (!allowed) {
