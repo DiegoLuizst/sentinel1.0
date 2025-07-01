@@ -20,3 +20,13 @@
   color: #fff;
   font-size: 1.2rem;
 }
+
+/* Ensure dropdown does not shift surrounding elements */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+}
