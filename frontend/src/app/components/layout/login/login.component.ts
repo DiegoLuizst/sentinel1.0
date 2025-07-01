@@ -25,7 +25,7 @@ export class LoginComponent {
         if(token){
           this.usuariosService.addToken(token);
           this.usuariosService.loadUsuarioLogado().subscribe({
-            next: () => this.router.navigate(['/admin/turmas'])
+            next: () => this.router.navigate(['/home'])
           });
         }
       },

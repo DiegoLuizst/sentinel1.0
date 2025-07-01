@@ -62,6 +62,12 @@ export class UsuariosService {
     localStorage.removeItem('token');
   }
 
+  logout() {
+    this.removerToken();
+    localStorage.removeItem('usuarioLogado');
+    this.usuarioLogado = null;
+  }
+
   getToken() {
     return localStorage.getItem('token');
   }

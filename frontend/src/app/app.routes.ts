@@ -9,12 +9,16 @@ import { UsuarioslistComponent } from './components/usuarios/usuarioslist/usuari
 import { UsuariosdetailsComponent } from './components/usuarios/usuariosdetails/usuariosdetails.component';
 import { PermissaoGrupoListComponent } from './components/permissao-grupo/permissao-grupo-list/permissao-grupo-list.component';
 import { PermissaoGrupoDetailsComponent } from './components/permissao-grupo/permissao-grupo-details/permissao-grupo-details.component';
+import { HomeComponent } from './components/home/home.component';
+import { RedirectComponent } from './components/layout/redirect/redirect.component';
 
 
 export const routes: Routes = [
-  {path: "", redirectTo: "login", pathMatch: 'full'},
-  {path: "login", component: LoginComponent},
-
+  { path: '', component: RedirectComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'home', component: PrincipalComponent, children: [
+    { path: '', component: HomeComponent }
+  ]},
   {path: "admin", component: PrincipalComponent, children:[
     {path: "turmas", component: TurmaslistComponent},
     {path: "turmas/new", component: TurmasdetailsComponent},
@@ -30,6 +34,5 @@ export const routes: Routes = [
     {path: "permissao/edit/:id", component: PermissaoGrupoDetailsComponent}
 
   ]},
-
-
+  { path: '**', redirectTo: '' }
 ];
