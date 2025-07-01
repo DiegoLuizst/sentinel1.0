@@ -1,6 +1,12 @@
-<!-- Image and text -->
 <nav class="navbar">
   <div class="container-fluid">
-
+    <div class="dropdown ms-auto" [class.show]="open" (click)="toggleDropdown()">
+      <a class="nav-link dropdown-toggle text-white" role="button">
+        {{ nomeUsuario }}
+      </a>
+      <ul class="dropdown-menu dropdown-menu-end" [class.show]="open">
+        <li><a class="dropdown-item" (click)="logout()">Sair</a></li>
+      </ul>
+    </div>
   </div>
 </nav>
