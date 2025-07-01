@@ -4,7 +4,7 @@
       <a class="nav-link dropdown-toggle text-white" role="button">
         {{ nomeUsuario }}
       </a>
-      <ul class="dropdown-menu dropdown-menu-end" [class.show]="open">
+      <ul *ngIf="open" class="dropdown-menu dropdown-menu-end">
         <li><a class="dropdown-item" (click)="logout()">Sair</a></li>
       </ul>
     </div>
