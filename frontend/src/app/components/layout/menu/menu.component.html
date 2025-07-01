@@ -1,12 +1,15 @@
 <nav class="navbar">
   <div class="container-fluid">
-    <div class="dropdown ms-auto" [class.show]="open" (click)="toggleDropdown()">
-      <a class="nav-link dropdown-toggle text-white" role="button">
-        {{ nomeUsuario }}
-      </a>
-      <ul *ngIf="open" class="dropdown-menu dropdown-menu-end">
-        <li><a class="dropdown-item" (click)="logout()">Sair</a></li>
-      </ul>
+    <div class="ms-auto d-flex align-items-center">
+      <span class="text-white me-2">{{ nomeUsuario }}</span>
+      <div class="dropdown" [class.show]="open">
+        <a class="nav-link user-icon" role="button" (click)="toggleDropdown()">
+          <i class="fas fa-user"></i>
+        </a>
+        <ul *ngIf="open" class="dropdown-menu dropdown-menu-end">
+          <li><a class="dropdown-item" (click)="logout()">Sair</a></li>
+        </ul>
+      </div>
     </div>
   </div>
 </nav>
