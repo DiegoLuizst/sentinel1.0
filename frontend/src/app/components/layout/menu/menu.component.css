@@ -14,3 +14,9 @@
   cursor: pointer;
   color: #fff;
 }
+
+.user-icon {
+  cursor: pointer;
+  color: #fff;
+  font-size: 1.2rem;
+}
