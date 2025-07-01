@@ -9,3 +9,8 @@
   height: 50px;
   border-bottom: 2px solid #FFC107;
 }
+
+.navbar .nav-link {
+  cursor: pointer;
+  color: #fff;
+}
