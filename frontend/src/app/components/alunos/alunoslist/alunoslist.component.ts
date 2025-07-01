@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { AgGridModule } from 'ag-grid-angular';
 import { MdbRippleModule } from 'mdb-angular-ui-kit/ripple';
@@ -14,7 +15,7 @@ ModuleRegistry.registerModules([AllCommunityModule]);
 @Component({
   selector: 'app-alunoslist',
   standalone: true,
-  imports: [AgGridModule, MdbRippleModule, RouterLink],
+  imports: [CommonModule, AgGridModule, MdbRippleModule, RouterLink],
   templateUrl: './alunoslist.component.html',
   styleUrl: './alunoslist.component.css'
 })

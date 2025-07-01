@@ -1,5 +1,6 @@
 import { TurmasService } from './../../../services/turmas.service';
 import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Turma } from '../../../models/turmas';
 import { Router, RouterLink } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -19,7 +20,7 @@ ModuleRegistry.registerModules([AllCommunityModule]);
 @Component({
   selector: 'app-turmaslist',
   standalone: true,
-  imports: [AgGridModule, MdbRippleModule, RouterLink],
+  imports: [CommonModule, AgGridModule, MdbRippleModule, RouterLink],
   templateUrl: './turmaslist.component.html',
   styleUrl: './turmaslist.component.css'
 })
