@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { UsuariosService } from '../../services/usuarios.service';
+import { UsuariosService } from '../../../services/usuarios.service';
 
 @Component({
   selector: 'app-menu',
