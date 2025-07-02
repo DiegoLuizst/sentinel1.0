@@ -37,9 +37,9 @@ public class Funcionario {
     private String bairro;
     private String cidade;
     private String estado;
-    private Date admissão;
-    private Date Demissão;
-    private String Status;
+    private Date admissao;
+    private Date demissao;
+    private String status;
 
     @ManyToOne
     @JoinColumn(name = "cargos_id")
