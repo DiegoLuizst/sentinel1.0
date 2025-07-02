@@ -30,8 +30,16 @@ public class Funcionario {
     private String email;
     private String telefone;
     private String cpf;
+    private String cep;
+    private String rua;
+    private String numero;
+    private String complemento;
+    private String bairro;
+    private String cidade;
+    private String estado;
     private Date admissão;
     private Date Demissão;
+    private String Status;
 
     @ManyToOne
     @JoinColumn(name = "cargos_id")
