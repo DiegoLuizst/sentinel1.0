@@ -19,7 +19,7 @@ import { CargoService } from '../../../services/cargo.service';
 })
 export class FuncionariosdetailsComponent {
 
-  funcionario: Funcionario = new Funcionario('', '', '', '', '', '', '', '', '', '', '', '', null, null, null);
+  funcionario: Funcionario = new Funcionario('', '', '', '', '', '', '', '', '', '', '', null, null, null);
   cargos: Cargo[] = [];
   router = inject(ActivatedRoute);
   router2 = inject(Router);
