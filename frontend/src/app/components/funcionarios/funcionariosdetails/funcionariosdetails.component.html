@@ -37,7 +37,7 @@
                 </div>
                 <div class="col-md-4 mb-3">
                   <mdb-form-control>
-                    <select mdbInput class="form-select" [(ngModel)]="funcionario.cargo" [ngModelOptions]="{standalone: true}">
+                    <select mdbInput id="cargo" class="form-select" [(ngModel)]="funcionario.cargo" [compareWith]="compareCargoFn" [ngModelOptions]="{standalone: true}">
                       <option *ngFor="let c of cargos" [ngValue]="c">{{c.nome}}</option>
                     </select>
                     <label mdbLabel class="form-label" for="cargo">Cargo</label>
