@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { MdbRippleModule } from 'mdb-angular-ui-kit/ripple';
+import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Funcionario } from '../../../models/funcionario';
 import { Cargo } from '../../../models/cargo';
@@ -13,7 +14,7 @@ import { CargoService } from '../../../services/cargo.service';
 @Component({
   selector: 'app-funcionariosdetails',
   standalone: true,
-  imports: [MdbFormsModule, MdbRippleModule, FormsModule],
+  imports: [CommonModule, MdbFormsModule, MdbRippleModule, FormsModule],
   templateUrl: './funcionariosdetails.component.html',
   styleUrl: './funcionariosdetails.component.css'
 })
