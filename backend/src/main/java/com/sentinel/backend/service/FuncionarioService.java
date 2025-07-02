@@ -63,10 +63,10 @@ public class FuncionarioService {
             return new ResponseEntity<>(rm, HttpStatus.BAD_REQUEST);
         }
 
-        if (acao.equalsIgnoreCase("cadastrar")) {
-            funcionario.setStatus("ATIVO");
-        } else if (funcionario.getDemissao() != null) {
+        if (funcionario.getDemissao() != null) {
             funcionario.setStatus("INATIVO");
+        } else {
+            funcionario.setStatus("ATIVO");
         }
 
         if (acao.equalsIgnoreCase("cadastrar")) {

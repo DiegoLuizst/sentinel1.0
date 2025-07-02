@@ -47,7 +47,7 @@ export class FuncionarioslistComponent {
     { field: 'email', headerName: 'Email', filter: 'agTextColumnFilter', floatingFilter: true },
     { field: 'telefone', headerName: 'Telefone', filter: 'agTextColumnFilter', floatingFilter: true },
     { field: 'cargo.nome', headerName: 'Cargo', valueGetter: params => params.data?.cargo?.nome, filter: 'agTextColumnFilter', floatingFilter: true },
-    { field: 'Status', headerName: 'Status', filter: 'agTextColumnFilter', floatingFilter: true },
+    { field: 'status', headerName: 'Status', filter: 'agTextColumnFilter', floatingFilter: true },
     {
       headerName: 'Ações',
       cellRenderer: (params: any) => {
@@ -135,10 +135,10 @@ export class FuncionarioslistComponent {
   viewById(id: number) {
     const funcionario = this.rowData.find(c => c.id === id);
     if (funcionario) {
-      Swal.fire({
-        title: 'Funcionário',
-        html: `<p><strong>Nome:</strong> ${funcionario.nome}</p><p><strong>Email:</strong> ${funcionario.email}</p><p><strong>Cargo:</strong> ${funcionario.cargo?.nome || ''}</p><p><strong>Status:</strong> ${funcionario.Status}</p>`,
-        icon: 'info'
+        Swal.fire({
+          title: 'Funcionário',
+          html: `<p><strong>Nome:</strong> ${funcionario.nome}</p><p><strong>Email:</strong> ${funcionario.email}</p><p><strong>Cargo:</strong> ${funcionario.cargo?.nome || ''}</p><p><strong>Status:</strong> ${funcionario.status}</p>`,
+          icon: 'info'
       });
     }
   }
