@@ -13,8 +13,8 @@ export class Funcionario {
   bairro: string;
   cidade: string;
   estado: string;
-  admissão: Date | null;
-  Demissão: Date | null;
+  admissao: Date | null;
+  demissao: Date | null;
   Status?: string;
   cargo: Cargo | null;
 
@@ -30,8 +30,8 @@ export class Funcionario {
     bairro: string,
     cidade: string,
     estado: string,
-    admissão: Date | null,
-    Demissão: Date | null,
+    admissao: Date | null,
+    demissao: Date | null,
     cargo: Cargo | null,
     id?: number,
     Status?: string
@@ -48,8 +48,8 @@ export class Funcionario {
     this.bairro = bairro;
     this.cidade = cidade;
     this.estado = estado;
-    this.admissão = admissão;
-    this.Demissão = Demissão;
+    this.admissao = admissao;
+    this.demissao = demissao;
     this.cargo = cargo;
     this.Status = Status;
   }

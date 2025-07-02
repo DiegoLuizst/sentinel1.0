@@ -55,7 +55,7 @@ public class FuncionarioService {
         } else if (funcionario.getEstado() == null || funcionario.getEstado().isEmpty()) {
             rm.setMensagem("O estado é obrigatório!");
             return new ResponseEntity<>(rm, HttpStatus.BAD_REQUEST);
-        } else if (funcionario.getAdmissão() == null) {
+        } else if (funcionario.getAdmissao() == null) {
             rm.setMensagem("A data de admissão é obrigatória!");
             return new ResponseEntity<>(rm, HttpStatus.BAD_REQUEST);
         } else if (funcionario.getCargo() == null) {
@@ -65,7 +65,7 @@ public class FuncionarioService {
 
         if (acao.equalsIgnoreCase("cadastrar")) {
             funcionario.setStatus("ATIVO");
-        } else if (funcionario.getDemissão() != null) {
+        } else if (funcionario.getDemissao() != null) {
             funcionario.setStatus("INATIVO");
         }
 
