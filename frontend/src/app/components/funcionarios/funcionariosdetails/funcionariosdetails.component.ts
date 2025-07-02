@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { MdbRippleModule } from 'mdb-angular-ui-kit/ripple';
@@ -17,7 +17,7 @@ import { CargoService } from '../../../services/cargo.service';
   templateUrl: './funcionariosdetails.component.html',
   styleUrl: './funcionariosdetails.component.css'
 })
-export class FuncionariosdetailsComponent {
+export class FuncionariosdetailsComponent implements OnInit {
 
   funcionario: Funcionario = new Funcionario('', '', '', '', '', '', '', '', '', '', '', null, null, null);
   cargos: Cargo[] = [];
@@ -27,11 +27,22 @@ export class FuncionariosdetailsComponent {
   cargoService = inject(CargoService);
   http = inject(HttpClient);
 
+  /**
+   * Função utilizada para comparar cargos no select de cargos.
+   * Necessária para exibir o cargo corretamente ao editar um funcionário.
+   */
+  compareCargoFn(c1: Cargo | null, c2: Cargo | null): boolean {
+    return c1 !== null && c2 !== null ? c1.id === c2.id : c1 === c2;
+  }
+
   constructor(){
     const id = this.router.snapshot.params['id'];
     if(id > 0){
       this.findById(id);
     }
+  }
+
+  ngOnInit(): void {
     this.loadCargos();
   }
 
