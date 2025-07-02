@@ -1,7 +1,6 @@
 package com.sentinel.backend.entity;
 
 import java.util.Date;
-import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
