@@ -15,7 +15,7 @@ export class Funcionario {
   estado: string;
   admissao: Date | null;
   demissao: Date | null;
-  Status?: string;
+  status?: string;
   cargo: Cargo | null;
 
   constructor(
@@ -34,7 +34,7 @@ export class Funcionario {
     demissao: Date | null,
     cargo: Cargo | null,
     id?: number,
-    Status?: string
+    status?: string
   ) {
     this.id = id;
     this.nome = nome;
@@ -51,6 +51,6 @@ export class Funcionario {
     this.admissao = admissao;
     this.demissao = demissao;
     this.cargo = cargo;
-    this.Status = Status;
+    this.status = status;
   }
 }

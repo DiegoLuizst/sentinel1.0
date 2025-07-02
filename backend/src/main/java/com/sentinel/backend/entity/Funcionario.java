@@ -39,7 +39,7 @@ public class Funcionario {
     private String estado;
     private Date admissao;
     private Date demissao;
-    private String Status;
+    private String status;
 
     @ManyToOne
     @JoinColumn(name = "cargos_id")
