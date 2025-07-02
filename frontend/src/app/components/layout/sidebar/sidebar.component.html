@@ -41,7 +41,12 @@
           </li>
           <li class="nav-item" *ngIf="hasGet('/cargos')">
             <a class="nav-link" routerLink="/admin/cargos" routerLinkActive="active">
-              <i class="fas fa-briefcase"></i> Cargo Funcionário
+              <i class="fas fa-briefcase"></i> Cargos
+            </a>
+          </li>
+          <li class="nav-item" *ngIf="hasGet('/funcionarios')">
+            <a class="nav-link" routerLink="/admin/funcionarios" routerLinkActive="active">
+              <i class="fas fa-users"></i> Funcionários
             </a>
           </li>
           <li class="nav-item" *ngIf="hasGet('/disciplinas')">
