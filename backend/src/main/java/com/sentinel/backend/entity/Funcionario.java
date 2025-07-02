@@ -37,8 +37,8 @@ public class Funcionario {
     private String bairro;
     private String cidade;
     private String estado;
-    private Date admissão;
-    private Date Demissão;
+    private Date admissao;
+    private Date demissao;
     private String Status;
 
     @ManyToOne
