@@ -39,6 +39,16 @@
               <i class="fas fa-user"></i> Usuários
             </a>
           </li>
+          <li class="nav-item" *ngIf="hasGet('/cargos')">
+            <a class="nav-link" routerLink="/admin/cargos" routerLinkActive="active">
+              <i class="fas fa-briefcase"></i> Cargo Funcionário
+            </a>
+          </li>
+          <li class="nav-item" *ngIf="hasGet('/disciplinas')">
+            <a class="nav-link" routerLink="/admin/disciplinas" routerLinkActive="active">
+              <i class="fas fa-book"></i> Disciplinas
+            </a>
+          </li>
           <li class="nav-item" *ngIf="hasGet('/permissao')">
             <a class="nav-link" routerLink="/admin/permissao" routerLinkActive="active">
               <i class="fas fa-users-cog"></i> Permissão Grupo
