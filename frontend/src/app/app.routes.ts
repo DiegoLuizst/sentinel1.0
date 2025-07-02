@@ -7,6 +7,12 @@ import { AlunoslistComponent } from './components/alunos/alunoslist/alunoslist.c
 import { AlunosdetailsComponent } from './components/alunos/alunosdetails/alunosdetails.component';
 import { UsuarioslistComponent } from './components/usuarios/usuarioslist/usuarioslist.component';
 import { UsuariosdetailsComponent } from './components/usuarios/usuariosdetails/usuariosdetails.component';
+import { CargoslistComponent } from './components/cargos/cargoslist/cargoslist.component';
+import { CargosdetailsComponent } from './components/cargos/cargosdetails/cargosdetails.component';
+import { DisciplinaslistComponent } from './components/disciplinas/disciplinaslist/disciplinaslist.component';
+import { DisciplinasdetailsComponent } from './components/disciplinas/disciplinasdetails/disciplinasdetails.component';
+import { FuncionarioslistComponent } from './components/funcionarios/funcionarioslist/funcionarioslist.component';
+import { FuncionariosdetailsComponent } from './components/funcionarios/funcionariosdetails/funcionariosdetails.component';
 import { PermissaoGrupoListComponent } from './components/permissao-grupo/permissao-grupo-list/permissao-grupo-list.component';
 import { PermissaoGrupoDetailsComponent } from './components/permissao-grupo/permissao-grupo-details/permissao-grupo-details.component';
 import { HomeComponent } from './components/home/home.component';
@@ -29,6 +35,15 @@ export const routes: Routes = [
     {path: "usuarios", component: UsuarioslistComponent},
     {path: "usuarios/new", component: UsuariosdetailsComponent},
     {path: "usuarios/edit/:id", component: UsuariosdetailsComponent},
+    {path: "cargos", component: CargoslistComponent},
+    {path: "cargos/new", component: CargosdetailsComponent},
+    {path: "cargos/edit/:id", component: CargosdetailsComponent},
+    {path: "disciplinas", component: DisciplinaslistComponent},
+    {path: "disciplinas/new", component: DisciplinasdetailsComponent},
+    {path: "disciplinas/edit/:id", component: DisciplinasdetailsComponent},
+    {path: "funcionarios", component: FuncionarioslistComponent},
+    {path: "funcionarios/new", component: FuncionariosdetailsComponent},
+    {path: "funcionarios/edit/:id", component: FuncionariosdetailsComponent},
     {path: "permissao", component: PermissaoGrupoListComponent},
     {path: "permissao/new", component: PermissaoGrupoDetailsComponent},
     {path: "permissao/edit/:id", component: PermissaoGrupoDetailsComponent}
