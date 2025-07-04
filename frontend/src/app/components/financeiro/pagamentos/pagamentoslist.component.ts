@@ -16,7 +16,8 @@ ModuleRegistry.registerModules([AllCommunityModule]);
   selector: 'app-pagamentoslist',
   standalone: true,
   imports: [CommonModule, AgGridModule, MdbRippleModule, RouterLink],
-  templateUrl: './pagamentoslist.component.html'
+  templateUrl: './pagamentoslist.component.html',
+  styleUrl: './pagamentoslist.component.css'
 })
 export class PagamentoslistComponent {
   private gridApi!: GridApi<Pagamento>;

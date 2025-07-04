@@ -15,7 +15,8 @@ ModuleRegistry.registerModules([AllCommunityModule]);
   selector: 'app-caixalist',
   standalone: true,
   imports: [CommonModule, AgGridModule, MdbRippleModule],
-  templateUrl: './caixalist.component.html'
+  templateUrl: './caixalist.component.html',
+  styleUrl: './caixalist.component.css'
 })
 export class CaixalistComponent {
   private gridApi!: GridApi<LancamentoFinanceiro>;

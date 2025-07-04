@@ -16,7 +16,8 @@ ModuleRegistry.registerModules([AllCommunityModule]);
   selector: 'app-parcelaslist',
   standalone: true,
   imports: [CommonModule, AgGridModule, MdbRippleModule, RouterLink],
-  templateUrl: './parcelaslist.component.html'
+  templateUrl: './parcelaslist.component.html',
+  styleUrl: './parcelaslist.component.css'
 })
 export class ParcelaslistComponent {
   private gridApi!: GridApi<Parcela>;

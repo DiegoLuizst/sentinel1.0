@@ -16,7 +16,8 @@ ModuleRegistry.registerModules([AllCommunityModule]);
   selector: 'app-descontoslist',
   standalone: true,
   imports: [CommonModule, AgGridModule, MdbRippleModule, RouterLink],
-  templateUrl: './descontoslist.component.html'
+  templateUrl: './descontoslist.component.html',
+  styleUrl: './descontoslist.component.css'
 })
 export class DescontoslistComponent {
   private gridApi!: GridApi<Desconto>;
