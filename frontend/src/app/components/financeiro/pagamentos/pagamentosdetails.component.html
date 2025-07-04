@@ -1,0 +1,74 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="card">
+      <div class="card-body">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <h5 class="card-title mb-0">Registrar Pagamento</h5>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-6 mb-3">
+                  <ng-container *ngIf="!parcelaPreDefinida; else parcelaInfo">
+                    <mdb-form-control>
+                      <select mdbInput class="form-select" [(ngModel)]="pagamento.parcela" [compareWith]="compareParcelaFn" [ngModelOptions]="{standalone: true}">
+                        <option *ngFor="let p of parcelas" [ngValue]="p">Parcela {{ p.numero }}</option>
+                      </select>
+                      <label mdbLabel class="form-label">Parcela</label>
+                    </mdb-form-control>
+                  </ng-container>
+                  <ng-template #parcelaInfo>
+                    <mdb-form-control>
+                      <input mdbInput type="text" class="form-control" [ngModel]="pagamento.parcela?.numero" disabled />
+                      <label mdbLabel class="form-label">Parcela</label>
+                    </mdb-form-control>
+                  </ng-template>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <mat-form-field appearance="fill" style="width: 100%;">
+                    <mat-label>Data do Pagamento</mat-label>
+                    <input matInput [matDatepicker]="picker" [(ngModel)]="pagamento.dataPagamento">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-4 mb-3">
+                  <mdb-form-control>
+                    <input mdbInput type="number" step="0.01" class="form-control" [(ngModel)]="pagamento.valorPago" />
+                    <label mdbLabel class="form-label">Valor Pago</label>
+                  </mdb-form-control>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <mdb-form-control>
+                    <select mdbInput class="form-select" [(ngModel)]="pagamento.formaPagamento" [ngModelOptions]="{standalone: true}">
+                      <option value="DINHEIRO">Dinheiro</option>
+                      <option value="CARTAO">Cartão</option>
+                      <option value="BOLETO">Boleto</option>
+                      <option value="PIX">Pix</option>
+                      <option value="TRANSFERENCIA">Transferência</option>
+                    </select>
+                    <label mdbLabel class="form-label">Forma de Pagamento</label>
+                  </mdb-form-control>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <mdb-form-control>
+                    <input mdbInput type="number" step="0.01" class="form-control" [(ngModel)]="pagamento['desconto']" />
+                    <label mdbLabel class="form-label">Desconto (opcional)</label>
+                  </mdb-form-control>
+                </div>
+              </div>
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
+                <button type="button" class="btn btn-warning btn-rounded" mdbRipple (click)="save()">
+                  <i class="fas fa-save me-2"></i>Salvar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
