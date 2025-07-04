@@ -23,6 +23,12 @@ Pré-requisitos:
 - Java 21
 - Maven
 
+> **Nota:** O Maven precisa acessar a internet para baixar dependências em um primeiro build.
+> Caso não haja conexão, utilize um espelho local do repositório ou um cache
+> pré-carregado. Em ambientes de CI, considere disponibilizar um repositório
+> Maven local para permitir builds offline.
+> Avalie também empacotar um cache do repositório Maven ou configurar o CI para fornecer essas dependências sem acesso à internet.
+
 Para executar:
 
 ```bash
