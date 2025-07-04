@@ -54,9 +54,56 @@
               <i class="fas fa-book"></i> Disciplinas
             </a>
           </li>
-          <li class="nav-item" *ngIf="hasGet('/permissao')">
+        <li class="nav-item" *ngIf="hasGet('/permissao')">
             <a class="nav-link" routerLink="/admin/permissao" routerLinkActive="active">
               <i class="fas fa-users-cog"></i> Permissão Grupo
+            </a>
+          </li>
+        </ul>
+    </div>
+
+    <div class="menu-section">
+      <div class="section-title text-center">Secretaria</div>
+        <ul class="navbar-nav">
+          <li class="nav-item" *ngIf="hasGet('/matriculas')">
+            <a class="nav-link" routerLink="/admin/matriculas" routerLinkActive="active">
+              <i class="fas fa-file-signature"></i> Matrícula
+            </a>
+          </li>
+        </ul>
+    </div>
+
+    <div class="menu-section">
+      <div class="section-title text-center">Financeiro</div>
+        <ul class="navbar-nav">
+          <li class="nav-item" *ngIf="hasGet('/planos-pagamento')">
+            <a class="nav-link" routerLink="/admin/planos" routerLinkActive="active">
+              <i class="fas fa-file-invoice-dollar"></i> Planos
+            </a>
+          </li>
+          <li class="nav-item" *ngIf="hasGet('/parcelas')">
+            <a class="nav-link" routerLink="/admin/parcelas" routerLinkActive="active">
+              <i class="fas fa-list-ol"></i> Parcelas
+            </a>
+          </li>
+          <li class="nav-item" *ngIf="hasGet('/pagamentos')">
+            <a class="nav-link" routerLink="/admin/pagamentos" routerLinkActive="active">
+              <i class="fas fa-money-bill-wave"></i> Pagamentos
+            </a>
+          </li>
+          <li class="nav-item" *ngIf="hasGet('/receitas') || hasGet('/despesas')">
+            <a class="nav-link" routerLink="/admin/receitas-despesas" routerLinkActive="active">
+              <i class="fas fa-exchange-alt"></i> Receitas/Despesas
+            </a>
+          </li>
+          <li class="nav-item" *ngIf="hasGet('/lancamentos-financeiros')">
+            <a class="nav-link" routerLink="/admin/caixa" routerLinkActive="active">
+              <i class="fas fa-cash-register"></i> Caixa
+            </a>
+          </li>
+          <li class="nav-item" *ngIf="hasGet('/descontos')">
+            <a class="nav-link" routerLink="/admin/descontos" routerLinkActive="active">
+              <i class="fas fa-percent"></i> Descontos
             </a>
           </li>
         </ul>

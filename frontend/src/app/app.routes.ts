@@ -17,6 +17,13 @@ import { PermissaoGrupoListComponent } from './components/permissao-grupo/permis
 import { PermissaoGrupoDetailsComponent } from './components/permissao-grupo/permissao-grupo-details/permissao-grupo-details.component';
 import { HomeComponent } from './components/home/home.component';
 import { RedirectComponent } from './components/layout/redirect/redirect.component';
+import { MatriculaslistComponent } from './components/matriculas/matriculaslist/matriculaslist.component';
+import { PlanoslistComponent } from './components/financeiro/planos/planoslist.component';
+import { ParcelaslistComponent } from './components/financeiro/parcelas/parcelaslist.component';
+import { PagamentoslistComponent } from './components/financeiro/pagamentos/pagamentoslist.component';
+import { ReceitasDespesasComponent } from './components/financeiro/receitas-despesas/receitas-despesas.component';
+import { CaixalistComponent } from './components/financeiro/caixa/caixalist.component';
+import { DescontoslistComponent } from './components/financeiro/descontos/descontoslist.component';
 
 
 export const routes: Routes = [
@@ -46,7 +53,14 @@ export const routes: Routes = [
     {path: "funcionarios/edit/:id", component: FuncionariosdetailsComponent},
     {path: "permissao", component: PermissaoGrupoListComponent},
     {path: "permissao/new", component: PermissaoGrupoDetailsComponent},
-    {path: "permissao/edit/:id", component: PermissaoGrupoDetailsComponent}
+    {path: "permissao/edit/:id", component: PermissaoGrupoDetailsComponent},
+    {path: "matriculas", component: MatriculaslistComponent},
+    {path: "planos", component: PlanoslistComponent},
+    {path: "parcelas", component: ParcelaslistComponent},
+    {path: "pagamentos", component: PagamentoslistComponent},
+    {path: "receitas-despesas", component: ReceitasDespesasComponent},
+    {path: "caixa", component: CaixalistComponent},
+    {path: "descontos", component: DescontoslistComponent}
 
   ]},
   { path: '**', redirectTo: '' }
