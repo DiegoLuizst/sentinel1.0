@@ -95,7 +95,7 @@ export class MatriculaslistComponent {
       const action = button.getAttribute('data-action');
       const id = button.getAttribute('data-id');
       if (action === 'edit') {
-        // editar matricula
+        this.router.navigate(['/admin/matriculas/edit', id]);
       } else if (action === 'view') {
         this.viewById(Number(id));
       } else if (action === 'delete') {

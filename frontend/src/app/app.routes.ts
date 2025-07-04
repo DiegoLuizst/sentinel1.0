@@ -18,6 +18,7 @@ import { PermissaoGrupoDetailsComponent } from './components/permissao-grupo/per
 import { HomeComponent } from './components/home/home.component';
 import { RedirectComponent } from './components/layout/redirect/redirect.component';
 import { MatriculaslistComponent } from './components/matriculas/matriculaslist/matriculaslist.component';
+import { MatriculasdetailsComponent } from './components/matriculas/matriculasdetails/matriculasdetails.component';
 import { PlanoslistComponent } from './components/financeiro/planos/planoslist.component';
 import { PlanosdetailsComponent } from './components/financeiro/planos/planosdetails.component';
 import { ParcelaslistComponent } from './components/financeiro/parcelas/parcelaslist.component';
@@ -60,6 +61,8 @@ export const routes: Routes = [
     {path: "permissao/new", component: PermissaoGrupoDetailsComponent},
     {path: "permissao/edit/:id", component: PermissaoGrupoDetailsComponent},
     {path: "matriculas", component: MatriculaslistComponent},
+    {path: "matriculas/new", component: MatriculasdetailsComponent},
+    {path: "matriculas/edit/:id", component: MatriculasdetailsComponent},
     {path: "planos", component: PlanoslistComponent},
     {path: "planos/new", component: PlanosdetailsComponent},
     {path: "planos/edit/:id", component: PlanosdetailsComponent},
