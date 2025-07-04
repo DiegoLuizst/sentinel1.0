@@ -60,7 +60,7 @@ export class PagamentosdetailsComponent implements OnInit {
     this.pagamentoService.save(this.pagamento).subscribe({
       next: () => {
         if (this.pagamento.parcela) {
-          this.pagamento.parcela.status = 'PAGA';
+          this.pagamento.parcela.status = 'QUITADO';
           this.parcelaService.update(this.pagamento.parcela).subscribe();
         }
         Swal.fire({ title: 'Pagamento registrado com sucesso!', icon: 'success', confirmButtonText: 'Ok' });

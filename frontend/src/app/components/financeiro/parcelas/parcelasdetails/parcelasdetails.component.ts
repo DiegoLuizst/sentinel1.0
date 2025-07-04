@@ -20,8 +20,8 @@ import { ParcelaService } from '../../../../services/parcela.service';
 })
 export class ParcelasdetailsComponent implements OnInit {
 
-  parcela: Parcela = new Parcela(null, 0, 0, null, 'ABERTA');
-  statusOptions = ['ABERTA', 'PAGA', 'ATRASADA'];
+  parcela: Parcela = new Parcela(null, 0, 0, null, 'ABERTO');
+  statusOptions = ['ABERTO', 'QUITADO', 'ATRASADA'];
   router = inject(ActivatedRoute);
   router2 = inject(Router);
   parcelaService = inject(ParcelaService);

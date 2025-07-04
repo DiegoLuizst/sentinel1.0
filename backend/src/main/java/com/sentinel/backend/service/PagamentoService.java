@@ -97,7 +97,7 @@ public class PagamentoService {
                 .subtract(totalPagos);
 
         if (saldo.compareTo(BigDecimal.ZERO) <= 0) {
-            parcela.setStatus("PAGO");
+            parcela.setStatus("QUITADO");
             parcelaRepository.save(parcela);
         }
     }

@@ -77,7 +77,6 @@ export class PagamentoslistComponent {
   router = inject(Router);
   usuariosService = inject(UsuariosService);
 
-  get canAdd() { return this.usuariosService.hasPermission('/pagamentos', 'POST'); }
   get canDelete() { return this.usuariosService.hasPermission('/pagamentos', 'DELETE'); }
 
   constructor() {
