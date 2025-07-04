@@ -8,8 +8,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { Parcela } from '../../../models/parcela';
-import { ParcelaService } from '../../../services/parcela.service';
+import { Parcela } from '../../../../models/parcela';
+import { ParcelaService } from '../../../../services/parcela.service';
 
 @Component({
   selector: 'app-parcelasdetails',
@@ -27,8 +27,9 @@ export class ParcelasdetailsComponent implements OnInit {
   parcelaService = inject(ParcelaService);
 
   constructor() {
-    const id = this.router.snapshot.params['id'];
-    if (id > 0) {
+    const idParam = this.router.snapshot.params['id'];
+    const id = Number(idParam);
+    if (id && id > 0) {
       this.findById(id);
     }
   }
@@ -37,7 +38,7 @@ export class ParcelasdetailsComponent implements OnInit {
 
   findById(id: number) {
     this.parcelaService.findById(id).subscribe({
-      next: ret => this.parcela = ret,
+      next: (ret: Parcela) => (this.parcela = ret),
       error: () => Swal.fire({ title: 'Ocorreu um erro!', icon: 'error', confirmButtonText: 'Ok' })
     });
   }
