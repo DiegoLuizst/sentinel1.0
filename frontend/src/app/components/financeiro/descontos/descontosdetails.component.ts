@@ -9,10 +9,8 @@ import { DescontoService } from '../../../services/desconto.service';
 
 interface DescontoForm {
   id?: number;
-  descricao: string;
-  tipo: string;
   valor: number;
-  criterio: string;
+  motivo: string;
 }
 
 @Component({
@@ -22,7 +20,7 @@ interface DescontoForm {
   templateUrl: './descontosdetails.component.html'
 })
 export class DescontosdetailsComponent {
-  desconto: DescontoForm = { descricao: '', tipo: '', valor: 0, criterio: '' };
+  desconto: DescontoForm = { valor: 0, motivo: '' };
   router = inject(ActivatedRoute);
   router2 = inject(Router);
   descontoService = inject(DescontoService);

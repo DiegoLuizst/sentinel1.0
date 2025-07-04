@@ -40,9 +40,8 @@ export class DescontoslistComponent {
   };
 
   colDefs: ColDef<Desconto>[] = [
-    { field: 'descricao', headerName: 'Descrição', filter: 'agTextColumnFilter', floatingFilter: true },
-    { field: 'valor', headerName: 'Valor/Percentual', filter: 'agNumberColumnFilter', floatingFilter: true },
-    { field: 'criterio', headerName: 'Critério de Aplicação', filter: 'agTextColumnFilter', floatingFilter: true },
+    { field: 'valor', headerName: 'Valor', filter: 'agNumberColumnFilter', floatingFilter: true },
+    { field: 'motivo', headerName: 'Motivo', filter: 'agTextColumnFilter', floatingFilter: true },
     {
       headerName: 'Ações',
       cellRenderer: (params: any) => {
@@ -132,9 +131,8 @@ export class DescontoslistComponent {
       Swal.fire({
         title: 'Desconto',
         html: `
-          <p><strong>Descrição:</strong> ${desconto.descricao}</p>
           <p><strong>Valor:</strong> ${desconto.valor}</p>
-          <p><strong>Critério:</strong> ${desconto.criterio}</p>
+          <p><strong>Motivo:</strong> ${desconto.motivo}</p>
         `,
         icon: 'info'
       });

@@ -44,7 +44,6 @@ export class PagamentoslistComponent {
     { field: 'dataPagamento', headerName: 'Data do Pagamento', filter: 'agDateColumnFilter', floatingFilter: true, valueFormatter: p => p.value ? new Date(p.value).toLocaleDateString('pt-BR') : '' },
     { field: 'valorPago', headerName: 'Valor Pago', filter: 'agNumberColumnFilter', floatingFilter: true },
     { field: 'formaPagamento', headerName: 'Forma de Pagamento', filter: 'agTextColumnFilter', floatingFilter: true },
-    { field: 'desconto.valor', headerName: 'Desconto Aplicado', valueGetter: p => p.data.desconto ? p.data.desconto.valor : '', filter: false },
     {
       headerName: 'Ações',
       cellRenderer: (params: any) => {
