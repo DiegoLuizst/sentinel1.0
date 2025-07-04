@@ -22,6 +22,7 @@ import { PlanoslistComponent } from './components/financeiro/planos/planoslist.c
 import { ParcelaslistComponent } from './components/financeiro/parcelas/parcelaslist.component';
 import { PagamentoslistComponent } from './components/financeiro/pagamentos/pagamentoslist.component';
 import { ReceitasDespesasComponent } from './components/financeiro/receitas-despesas/receitas-despesas.component';
+import { ReceitasDespesasdetailsComponent } from './components/financeiro/receitas-despesas/receitas-despesasdetails.component';
 import { CaixalistComponent } from './components/financeiro/caixa/caixalist.component';
 import { DescontoslistComponent } from './components/financeiro/descontos/descontoslist.component';
 
@@ -59,6 +60,7 @@ export const routes: Routes = [
     {path: "parcelas", component: ParcelaslistComponent},
     {path: "pagamentos", component: PagamentoslistComponent},
     {path: "receitas-despesas", component: ReceitasDespesasComponent},
+    {path: "receitas-despesas/new", component: ReceitasDespesasdetailsComponent},
     {path: "caixa", component: CaixalistComponent},
     {path: "descontos", component: DescontoslistComponent}
 
