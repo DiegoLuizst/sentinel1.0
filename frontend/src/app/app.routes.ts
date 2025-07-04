@@ -69,8 +69,6 @@ export const routes: Routes = [
     {path: "parcelas", component: ParcelaslistComponent},
     {path: "parcelas/edit/:id", component: ParcelasdetailsComponent},
     {path: "pagamentos", component: PagamentoslistComponent},
-    {path: "pagamentos/new", component: PagamentosdetailsComponent},
-    {path: "pagamentos/edit/:id", component: PagamentosdetailsComponent},
     {path: "receitas-despesas", component: ReceitasDespesasComponent},
     {path: "receitas-despesas/new", component: ReceitasDespesasdetailsComponent},
     {path: "caixa", component: CaixalistComponent},

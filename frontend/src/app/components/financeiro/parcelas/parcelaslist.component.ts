@@ -7,6 +7,8 @@ import { ColDef, GridApi, GridOptions, GridReadyEvent } from 'ag-grid-community'
 import { ModuleRegistry, AllCommunityModule } from 'ag-grid-community';
 import { Parcela } from '../../../models/parcela';
 import { ParcelaService } from '../../../services/parcela.service';
+import { Pagamento } from '../../../models/pagamento';
+import { PagamentoService } from '../../../services/pagamento.service';
 import { UsuariosService } from '../../../services/usuarios.service';
 import Swal from 'sweetalert2';
 
@@ -81,6 +83,7 @@ export class ParcelaslistComponent {
   parcelasService = inject(ParcelaService);
   router = inject(Router);
   usuariosService = inject(UsuariosService);
+  pagamentoService = inject(PagamentoService);
 
   get canAdd() { return this.usuariosService.hasPermission('/parcelas', 'POST'); }
   get canEdit() { return this.usuariosService.hasPermission('/parcelas', 'PUT'); }
@@ -146,7 +149,44 @@ export class ParcelaslistComponent {
   }
 
   markPaid(id: number) {
-    // aqui faria requisição para marcar como quitada
-    Swal.fire({ title: 'Parcela quitada!', icon: 'success', confirmButtonText: 'Ok' });
+    const parcela = this.rowData.find(p => p.id === id);
+    if (!parcela) { return; }
+
+    Swal.fire<{ data: string; forma: string }>({
+      title: 'Registrar Pagamento',
+      html: `
+        <input type="date" id="dataPag" class="swal2-input" />
+        <select id="formaPag" class="swal2-select">
+          <option value="DINHEIRO">Dinheiro</option>
+          <option value="CARTAO">Cartão</option>
+          <option value="BOLETO">Boleto</option>
+          <option value="PIX">Pix</option>
+          <option value="TRANSFERENCIA">Transferência</option>
+        </select>`,
+      focusConfirm: false,
+      preConfirm: () => {
+        const data = (document.getElementById('dataPag') as HTMLInputElement).value;
+        const forma = (document.getElementById('formaPag') as HTMLSelectElement).value;
+        if (!data || !forma) {
+          Swal.showValidationMessage('Informe data e forma de pagamento');
+          return false as any;
+        }
+        return { data, forma };
+      },
+      showCancelButton: true,
+      confirmButtonText: 'Salvar',
+      cancelButtonText: 'Cancelar'
+    }).then(result => {
+      if (result.isConfirmed && result.value) {
+        const pagamento = new Pagamento(parcela, new Date(result.value.data), parcela.valorOriginal, result.value.forma);
+        this.pagamentoService.save(pagamento).subscribe({
+          next: () => {
+            Swal.fire({ title: 'Parcela quitada!', icon: 'success', confirmButtonText: 'Ok' });
+            this.findAll();
+          },
+          error: () => Swal.fire({ title: 'Ocorreu um erro!', icon: 'error', confirmButtonText: 'Ok' })
+        });
+      }
+    });
   }
 }
