@@ -96,7 +96,7 @@ export class PlanoslistComponent {
       const action = button.getAttribute('data-action');
       const id = button.getAttribute('data-id');
       if (action === 'edit') {
-        // rota de edição ainda não criada
+        this.router.navigate(['admin/planos/edit', id]);
       } else if (action === 'view') {
         this.viewById(Number(id));
       } else if (action === 'delete') {

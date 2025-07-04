@@ -94,7 +94,7 @@ export class DescontoslistComponent {
       const action = button.getAttribute('data-action');
       const id = button.getAttribute('data-id');
       if (action === 'edit') {
-        // editar desconto
+        this.router.navigate(['admin/descontos/edit', id]);
       } else if (action === 'view') {
         this.viewById(Number(id));
       } else if (action === 'delete') {

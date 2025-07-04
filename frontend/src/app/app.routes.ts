@@ -19,12 +19,16 @@ import { HomeComponent } from './components/home/home.component';
 import { RedirectComponent } from './components/layout/redirect/redirect.component';
 import { MatriculaslistComponent } from './components/matriculas/matriculaslist/matriculaslist.component';
 import { PlanoslistComponent } from './components/financeiro/planos/planoslist.component';
+import { PlanosdetailsComponent } from './components/financeiro/planos/planosdetails.component';
 import { ParcelaslistComponent } from './components/financeiro/parcelas/parcelaslist.component';
+import { ParcelasdetailsComponent } from './components/financeiro/parcelas/parcelasdetails/parcelasdetails.component';
 import { PagamentoslistComponent } from './components/financeiro/pagamentos/pagamentoslist.component';
+import { PagamentosdetailsComponent } from './components/financeiro/pagamentos/pagamentosdetails.component';
 import { ReceitasDespesasComponent } from './components/financeiro/receitas-despesas/receitas-despesas.component';
 import { ReceitasDespesasdetailsComponent } from './components/financeiro/receitas-despesas/receitas-despesasdetails.component';
 import { CaixalistComponent } from './components/financeiro/caixa/caixalist.component';
 import { DescontoslistComponent } from './components/financeiro/descontos/descontoslist.component';
+import { DescontosdetailsComponent } from './components/financeiro/descontos/descontosdetails.component';
 
 
 export const routes: Routes = [
@@ -57,12 +61,19 @@ export const routes: Routes = [
     {path: "permissao/edit/:id", component: PermissaoGrupoDetailsComponent},
     {path: "matriculas", component: MatriculaslistComponent},
     {path: "planos", component: PlanoslistComponent},
+    {path: "planos/new", component: PlanosdetailsComponent},
+    {path: "planos/edit/:id", component: PlanosdetailsComponent},
     {path: "parcelas", component: ParcelaslistComponent},
+    {path: "parcelas/edit/:id", component: ParcelasdetailsComponent},
     {path: "pagamentos", component: PagamentoslistComponent},
+    {path: "pagamentos/new", component: PagamentosdetailsComponent},
+    {path: "pagamentos/edit/:id", component: PagamentosdetailsComponent},
     {path: "receitas-despesas", component: ReceitasDespesasComponent},
     {path: "receitas-despesas/new", component: ReceitasDespesasdetailsComponent},
     {path: "caixa", component: CaixalistComponent},
-    {path: "descontos", component: DescontoslistComponent}
+    {path: "descontos", component: DescontoslistComponent},
+    {path: "descontos/new", component: DescontosdetailsComponent},
+    {path: "descontos/edit/:id", component: DescontosdetailsComponent}
 
   ]},
   { path: '**', redirectTo: '' }

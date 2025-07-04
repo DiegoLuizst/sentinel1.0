@@ -95,7 +95,7 @@ export class ParcelaslistComponent {
       const action = button.getAttribute('data-action');
       const id = button.getAttribute('data-id');
       if (action === 'edit') {
-        // editar pagamento
+        this.router.navigate(['admin/parcelas/edit', id]);
       } else if (action === 'view') {
         this.viewById(Number(id));
       } else if (action === 'quit') {
