@@ -40,7 +40,7 @@ export class ParcelaslistComponent {
   };
 
   colDefs: ColDef<Parcela>[] = [
-    { field: 'matricula.aluno.nome', headerName: 'Matrícula', valueGetter: params => `${params.data.matricula?.aluno?.nome}/${params.data.matricula?.turma?.nome}`, filter: 'agTextColumnFilter', floatingFilter: true },
+    { field: 'matricula.aluno.nome', headerName: 'Matrícula', valueGetter: params => `${params.data?.matricula?.aluno?.nome}/${params.data?.matricula?.turma?.nome}`, filter: 'agTextColumnFilter', floatingFilter: true },
     { field: 'numero', headerName: 'Número da Parcela', filter: 'agNumberColumnFilter', floatingFilter: true },
     { field: 'valorOriginal', headerName: 'Valor Original', filter: 'agNumberColumnFilter', floatingFilter: true },
     { field: 'dataVencimento', headerName: 'Data de Vencimento', filter: 'agDateColumnFilter', floatingFilter: true, valueFormatter: p => p.value ? new Date(p.value).toLocaleDateString('pt-BR') : '' },
