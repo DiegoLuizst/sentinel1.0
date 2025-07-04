@@ -1,6 +1,7 @@
 package com.sentinel.backend.service;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.Optional;
@@ -57,7 +58,8 @@ public class MatriculaService {
     private void gerarParcelas(Matricula matricula) {
         PlanoPagamento plano = matricula.getPlanoPagamento();
         int quantidade = plano.getNumeroParcelas();
-        BigDecimal valorParcela = plano.getValorTotal().divide(BigDecimal.valueOf(quantidade));
+        BigDecimal valorParcela = plano.getValorTotal()
+                .divide(BigDecimal.valueOf(quantidade), 2, RoundingMode.HALF_UP);
         long incremento = getIncrementoMeses(plano.getPeriodicidade());
         LocalDate vencimento = LocalDate.now();
         for (int i = 1; i <= quantidade; i++) {
