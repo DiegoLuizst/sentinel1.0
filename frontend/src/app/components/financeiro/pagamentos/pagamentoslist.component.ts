@@ -40,7 +40,7 @@ export class PagamentoslistComponent {
   };
 
   colDefs: ColDef<Pagamento>[] = [
-    { field: 'parcela.numero', headerName: 'Parcela', valueGetter: p => p.data.parcela?.numero, filter: 'agNumberColumnFilter', floatingFilter: true },
+    { field: 'parcela.numero', headerName: 'Parcela', valueGetter: params => params.data?.parcela?.numero, filter: 'agNumberColumnFilter', floatingFilter: true },
     { field: 'dataPagamento', headerName: 'Data do Pagamento', filter: 'agDateColumnFilter', floatingFilter: true, valueFormatter: p => p.value ? new Date(p.value).toLocaleDateString('pt-BR') : '' },
     { field: 'valorPago', headerName: 'Valor Pago', filter: 'agNumberColumnFilter', floatingFilter: true },
     { field: 'formaPagamento', headerName: 'Forma de Pagamento', filter: 'agTextColumnFilter', floatingFilter: true },
