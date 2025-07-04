@@ -39,11 +39,15 @@ export class CaixalistComponent {
   };
 
   colDefs: ColDef<LancamentoFinanceiro>[] = [
-    { field: 'data', headerName: 'Data', filter: 'agDateColumnFilter', floatingFilter: true, valueFormatter: p => p.value ? new Date(p.value).toLocaleDateString('pt-BR') : '' },
-    { field: 'descricao', headerName: 'Descrição', filter: 'agTextColumnFilter', floatingFilter: true },
-    { field: 'tipo', headerName: 'Tipo', filter: 'agTextColumnFilter', floatingFilter: true },
-    { field: 'valor', headerName: 'Valor', filter: 'agNumberColumnFilter', floatingFilter: true },
-    { field: 'saldo', headerName: 'Saldo Acumulado', filter: 'agNumberColumnFilter', floatingFilter: true }
+    {
+      field: 'data',
+      headerName: 'Data',
+      filter: 'agDateColumnFilter',
+      floatingFilter: true,
+      valueFormatter: p => p.value ? new Date(p.value).toLocaleDateString('pt-BR') : ''
+    },
+    { field: 'saldoDiario', headerName: 'Saldo Diário', filter: 'agNumberColumnFilter', floatingFilter: true },
+    { field: 'saldoMensal', headerName: 'Saldo Mensal', filter: 'agNumberColumnFilter', floatingFilter: true }
   ];
 
   defaultColDef: ColDef = {

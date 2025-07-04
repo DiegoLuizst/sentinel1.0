@@ -11,31 +11,14 @@
               <div class="row mb-3">
                 <div class="col-md-6 mb-3">
                   <mdb-form-control>
-                    <input mdbInput type="text" class="form-control" [(ngModel)]="desconto.descricao" />
-                    <label mdbLabel class="form-label">Descrição</label>
-                  </mdb-form-control>
-                </div>
-                <div class="col-md-6 mb-3">
-                  <mdb-form-control>
-                    <select mdbInput class="form-select" [(ngModel)]="desconto.tipo" [ngModelOptions]="{standalone: true}">
-                      <option value="VALOR">Valor Fixo</option>
-                      <option value="PERCENTUAL">Percentual</option>
-                    </select>
-                    <label mdbLabel class="form-label">Tipo</label>
-                  </mdb-form-control>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <div class="col-md-6 mb-3">
-                  <mdb-form-control>
                     <input mdbInput type="number" step="0.01" class="form-control" [(ngModel)]="desconto.valor" />
                     <label mdbLabel class="form-label">Valor</label>
                   </mdb-form-control>
                 </div>
                 <div class="col-md-6 mb-3">
                   <mdb-form-control>
-                    <input mdbInput type="text" class="form-control" [(ngModel)]="desconto.criterio" />
-                    <label mdbLabel class="form-label">Critério</label>
+                    <input mdbInput type="text" class="form-control" [(ngModel)]="desconto.motivo" />
+                    <label mdbLabel class="form-label">Motivo</label>
                   </mdb-form-control>
                 </div>
               </div>

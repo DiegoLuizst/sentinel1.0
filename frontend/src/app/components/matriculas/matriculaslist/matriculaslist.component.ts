@@ -43,7 +43,6 @@ export class MatriculaslistComponent {
     { field: 'aluno.nome', headerName: 'Aluno', valueGetter: params => params.data.aluno?.nome, filter: 'agTextColumnFilter', floatingFilter: true },
     { field: 'turma.nome', headerName: 'Turma', valueGetter: params => params.data.turma?.nome, filter: 'agTextColumnFilter', floatingFilter: true },
     { field: 'planoPagamento.descricao', headerName: 'Plano de Pagamento', valueGetter: params => params.data.planoPagamento?.descricao, filter: 'agTextColumnFilter', floatingFilter: true },
-    { field: 'anoSemestre', headerName: 'Ano/Semestre', filter: 'agTextColumnFilter', floatingFilter: true },
     {
       headerName: 'Ações',
       cellRenderer: (params: any) => {
