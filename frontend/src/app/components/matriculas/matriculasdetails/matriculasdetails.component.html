@@ -1,0 +1,62 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="card">
+      <div class="card-body">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <h5 class="card-title mb-0">Cadastro de Matrículas</h5>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-6 mb-3">
+                  <mdb-form-control>
+                    <select mdbInput class="form-select" [(ngModel)]="matricula.aluno" [compareWith]="compareAlunoFn" [ngModelOptions]="{standalone: true}">
+                      <option *ngFor="let a of alunos" [ngValue]="a">{{ a.nome }}</option>
+                    </select>
+                    <label mdbLabel class="form-label">Aluno</label>
+                  </mdb-form-control>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <mdb-form-control>
+                    <select mdbInput class="form-select" [(ngModel)]="matricula.turma" [compareWith]="compareTurmaFn" [ngModelOptions]="{standalone: true}">
+                      <option *ngFor="let t of turmas" [ngValue]="t">{{ t.nome }}</option>
+                    </select>
+                    <label mdbLabel class="form-label">Turma</label>
+                  </mdb-form-control>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-6 mb-3">
+                  <mdb-form-control>
+                    <select mdbInput class="form-select" [(ngModel)]="matricula.planoPagamento" [compareWith]="comparePlanoFn" [ngModelOptions]="{standalone: true}">
+                      <option *ngFor="let p of planos" [ngValue]="p">{{ p.descricao }}</option>
+                    </select>
+                    <label mdbLabel class="form-label">Plano de Pagamento</label>
+                  </mdb-form-control>
+                </div>
+                <div class="col-md-3 mb-3">
+                  <mdb-form-control>
+                    <input mdbInput type="text" id="ano" class="form-control" [(ngModel)]="ano" />
+                    <label mdbLabel class="form-label" for="ano">Ano</label>
+                  </mdb-form-control>
+                </div>
+                <div class="col-md-3 mb-3">
+                  <mdb-form-control>
+                    <input mdbInput type="text" id="semestre" class="form-control" [(ngModel)]="semestre" />
+                    <label mdbLabel class="form-label" for="semestre">Semestre</label>
+                  </mdb-form-control>
+                </div>
+              </div>
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
+                <button type="button" class="btn btn-warning btn-rounded" mdbRipple (click)="save()">
+                  <i class="fas fa-save me-2"></i>Salvar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
