@@ -16,7 +16,8 @@ ModuleRegistry.registerModules([AllCommunityModule]);
   selector: 'app-planoslist',
   standalone: true,
   imports: [CommonModule, AgGridModule, MdbRippleModule, RouterLink],
-  templateUrl: './planoslist.component.html'
+  templateUrl: './planoslist.component.html',
+  styleUrl: './planoslist.component.css'
 })
 export class PlanoslistComponent {
   private gridApi!: GridApi<PlanoPagamento>;

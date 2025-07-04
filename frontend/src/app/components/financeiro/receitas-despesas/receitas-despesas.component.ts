@@ -17,7 +17,8 @@ ModuleRegistry.registerModules([AllCommunityModule]);
   selector: 'app-receitas-despesas',
   standalone: true,
   imports: [CommonModule, AgGridModule, MdbRippleModule],
-  templateUrl: './receitas-despesas.component.html'
+  templateUrl: './receitas-despesas.component.html',
+  styleUrl: './receitas-despesas.component.css'
 })
 export class ReceitasDespesasComponent {
   private gridApiR!: GridApi<Despesa>;

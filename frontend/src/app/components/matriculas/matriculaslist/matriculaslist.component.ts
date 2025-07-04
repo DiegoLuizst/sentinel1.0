@@ -16,7 +16,8 @@ ModuleRegistry.registerModules([AllCommunityModule]);
   selector: 'app-matriculaslist',
   standalone: true,
   imports: [CommonModule, AgGridModule, MdbRippleModule, RouterLink],
-  templateUrl: './matriculaslist.component.html'
+  templateUrl: './matriculaslist.component.html',
+  styleUrl: './matriculaslist.component.css'
 })
 export class MatriculaslistComponent {
   private gridApi!: GridApi<Matricula>;
