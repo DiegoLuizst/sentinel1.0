@@ -72,10 +72,15 @@ export class AlunoslistComponent {
           `<button type="button" class="btn btn-danger btn-rounded btn-sm btn-icon" data-action="delete" data-id="${aluno.id}">
             <i class="fas fa-trash-alt"></i>
           </button>` : '';
+        const matriculaBtn = this.canMatricular ?
+          `<button type="button" class="btn btn-success btn-rounded btn-sm btn-icon" data-action="matricular" data-id="${aluno.id}">
+            <i class="fas fa-user-plus"></i>
+          </button>` : '';
         return `
           <button type="button" class="btn btn-info btn-rounded btn-sm btn-icon" data-action="view" data-id="${aluno.id}">
             <i class="fas fa-eye"></i>
           </button>
+          ${matriculaBtn}
           ${editBtn}
           ${delBtn}
         `;
@@ -110,6 +115,10 @@ export class AlunoslistComponent {
     return this.usuariosService.hasPermission('/alunos', 'DELETE');
   }
 
+  get canMatricular() {
+    return this.usuariosService.hasPermission('/matriculas', 'POST');
+  }
+
   constructor() {
     this.findAll();
   }
@@ -126,6 +135,8 @@ export class AlunoslistComponent {
         this.viewById(Number(id));
       } else if (action === 'delete') {
         this.deleteById(Number(id));
+      } else if (action === 'matricular') {
+        this.router.navigate(['/admin/matriculas/new'], { queryParams: { alunoId: id } });
       }
     }
   };
