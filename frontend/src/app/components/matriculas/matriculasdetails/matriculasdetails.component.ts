@@ -64,7 +64,16 @@ export class MatriculasdetailsComponent implements OnInit {
 
   loadAlunos() {
     this.alunosService.findAll().subscribe({
-      next: lista => this.alunos = lista,
+      next: lista => {
+        this.alunos = lista;
+        const alunoId = this.router.snapshot.queryParamMap.get('alunoId');
+        if (alunoId) {
+          const alunoSel = lista.find(a => a.id === Number(alunoId));
+          if (alunoSel) {
+            this.matricula.aluno = alunoSel;
+          }
+        }
+      },
       error: () => Swal.fire({ title: 'Ocorreu um erro!', icon: 'error', confirmButtonText: 'Ok' })
     });
   }
