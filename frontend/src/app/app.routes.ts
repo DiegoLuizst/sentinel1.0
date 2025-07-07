@@ -13,6 +13,8 @@ import { DisciplinaslistComponent } from './components/disciplinas/disciplinasli
 import { DisciplinasdetailsComponent } from './components/disciplinas/disciplinasdetails/disciplinasdetails.component';
 import { FuncionarioslistComponent } from './components/funcionarios/funcionarioslist/funcionarioslist.component';
 import { FuncionariosdetailsComponent } from './components/funcionarios/funcionariosdetails/funcionariosdetails.component';
+import { ProfessoreslistComponent } from './components/professores/professoreslist/professoreslist.component';
+import { ProfessoresdetailsComponent } from './components/professores/professoresdetails/professoresdetails.component';
 import { PermissaoGrupoListComponent } from './components/permissao-grupo/permissao-grupo-list/permissao-grupo-list.component';
 import { PermissaoGrupoDetailsComponent } from './components/permissao-grupo/permissao-grupo-details/permissao-grupo-details.component';
 import { HomeComponent } from './components/home/home.component';
@@ -57,6 +59,9 @@ export const routes: Routes = [
     {path: "funcionarios", component: FuncionarioslistComponent},
     {path: "funcionarios/new", component: FuncionariosdetailsComponent},
     {path: "funcionarios/edit/:id", component: FuncionariosdetailsComponent},
+    {path: "professores", component: ProfessoreslistComponent},
+    {path: "professores/new", component: ProfessoresdetailsComponent},
+    {path: "professores/edit/:id", component: ProfessoresdetailsComponent},
     {path: "permissao", component: PermissaoGrupoListComponent},
     {path: "permissao/new", component: PermissaoGrupoDetailsComponent},
     {path: "permissao/edit/:id", component: PermissaoGrupoDetailsComponent},
