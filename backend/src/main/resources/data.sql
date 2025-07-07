@@ -72,7 +72,15 @@ INSERT IGNORE INTO permissoes_pagina (id, nome, rota, metodo_http) VALUES
   (66, 'Professores - Listar', '/professores', 'GET'),
   (67, 'Professores - Criar', '/professores', 'POST'),
   (68, 'Professores - Atualizar', '/professores', 'PUT'),
-  (69, 'Professores - Remover', '/professores', 'DELETE');
+  (69, 'Professores - Remover', '/professores', 'DELETE'),
+  (70, 'Diário Classe - Listar', '/diario-classe', 'GET'),
+  (71, 'Diário Classe - Criar', '/diario-classe', 'POST'),
+  (72, 'Diário Classe - Atualizar', '/diario-classe', 'PUT'),
+  (73, 'Diário Classe - Remover', '/diario-classe', 'DELETE'),
+  (74, 'Diário Bordo - Listar', '/diario-bordo', 'GET'),
+  (75, 'Diário Bordo - Criar', '/diario-bordo', 'POST'),
+  (76, 'Diário Bordo - Atualizar', '/diario-bordo', 'PUT'),
+  (77, 'Diário Bordo - Remover', '/diario-bordo', 'DELETE');
 
 -- Vincula todas as páginas ao grupo ADMIN
 INSERT IGNORE INTO grupo_paginas (grupo_id, pagina_id) VALUES
@@ -89,4 +97,6 @@ INSERT IGNORE INTO grupo_paginas (grupo_id, pagina_id) VALUES
   (1,57),(1,58),(1,59),(1,60),
   (1,61),(1,62),(1,63),(1,64),
   (1,65),(1,66),(1,67),(1,68),
-  (1,69);
+  (1,69),(1,70),(1,71),(1,72),
+  (1,73),(1,74),(1,75),(1,76),
+  (1,77);
