@@ -44,9 +44,14 @@
               <i class="fas fa-briefcase"></i> Cargos
             </a>
           </li>
-          <li class="nav-item" *ngIf="hasGet('/funcionarios')">
+        <li class="nav-item" *ngIf="hasGet('/funcionarios')">
             <a class="nav-link" routerLink="/admin/funcionarios" routerLinkActive="active">
               <i class="fas fa-users"></i> Funcionários
+            </a>
+          </li>
+          <li class="nav-item" *ngIf="hasGet('/professores')">
+            <a class="nav-link" routerLink="/admin/professores" routerLinkActive="active">
+              <i class="fas fa-chalkboard-teacher"></i> Professores
             </a>
           </li>
           <li class="nav-item" *ngIf="hasGet('/disciplinas')">
