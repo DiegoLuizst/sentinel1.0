@@ -68,7 +68,11 @@ INSERT IGNORE INTO permissoes_pagina (id, nome, rota, metodo_http) VALUES
   (62, 'Descontos - Criar', '/descontos', 'POST'),
   (63, 'Descontos - Atualizar', '/descontos', 'PUT'),
   (64, 'Descontos - Remover', '/descontos', 'DELETE'),
-  (65, 'Login', '/api/login', 'POST');
+  (65, 'Login', '/api/login', 'POST'),
+  (66, 'Professores - Listar', '/professores', 'GET'),
+  (67, 'Professores - Criar', '/professores', 'POST'),
+  (68, 'Professores - Atualizar', '/professores', 'PUT'),
+  (69, 'Professores - Remover', '/professores', 'DELETE');
 
 -- Vincula todas as páginas ao grupo ADMIN
 INSERT IGNORE INTO grupo_paginas (grupo_id, pagina_id) VALUES
@@ -84,4 +88,5 @@ INSERT IGNORE INTO grupo_paginas (grupo_id, pagina_id) VALUES
   (1,53),(1,54),(1,55),(1,56),
   (1,57),(1,58),(1,59),(1,60),
   (1,61),(1,62),(1,63),(1,64),
-  (1,65);
+  (1,65),(1,66),(1,67),(1,68),
+  (1,69);
