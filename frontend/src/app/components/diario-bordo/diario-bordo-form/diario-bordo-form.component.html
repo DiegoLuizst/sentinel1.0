@@ -1,0 +1,13 @@
+<div class="container mt-3">
+  <form (ngSubmit)="save()" #form="ngForm">
+    <div class="mb-3">
+      <label class="form-label">Data</label>
+      <input mdbInput type="date" [(ngModel)]="diario.data" name="data" class="form-control" />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Anotação</label>
+      <textarea mdbInput [(ngModel)]="diario.anotacao" name="anotacao" class="form-control"></textarea>
+    </div>
+    <button mdbBtn type="submit" class="btn btn-primary">Salvar</button>
+  </form>
+</div>

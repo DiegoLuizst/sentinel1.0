@@ -32,6 +32,10 @@ import { ReceitasDespesasdetailsComponent } from './components/financeiro/receit
 import { CaixalistComponent } from './components/financeiro/caixa/caixalist.component';
 import { DescontoslistComponent } from './components/financeiro/descontos/descontoslist.component';
 import { DescontosdetailsComponent } from './components/financeiro/descontos/descontosdetails.component';
+import { DiarioClasseListComponent } from './components/diario-classe/diario-classe-list/diario-classe-list.component';
+import { DiarioClasseFormComponent } from './components/diario-classe/diario-classe-form/diario-classe-form.component';
+import { DiarioBordoListComponent } from './components/diario-bordo/diario-bordo-list/diario-bordo-list.component';
+import { DiarioBordoFormComponent } from './components/diario-bordo/diario-bordo-form/diario-bordo-form.component';
 
 
 export const routes: Routes = [
@@ -79,7 +83,13 @@ export const routes: Routes = [
     {path: "caixa", component: CaixalistComponent},
     {path: "descontos", component: DescontoslistComponent},
     {path: "descontos/new", component: DescontosdetailsComponent},
-    {path: "descontos/edit/:id", component: DescontosdetailsComponent}
+    {path: "descontos/edit/:id", component: DescontosdetailsComponent},
+    {path: "diario-classe", component: DiarioClasseListComponent},
+    {path: "diario-classe/new", component: DiarioClasseFormComponent},
+    {path: "diario-classe/edit/:id", component: DiarioClasseFormComponent},
+    {path: "diario-bordo", component: DiarioBordoListComponent},
+    {path: "diario-bordo/new", component: DiarioBordoFormComponent},
+    {path: "diario-bordo/edit/:id", component: DiarioBordoFormComponent}
 
   ]},
   { path: '**', redirectTo: '' }

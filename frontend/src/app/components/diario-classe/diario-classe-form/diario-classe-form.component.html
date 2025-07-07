@@ -1,0 +1,24 @@
+<div class="container mt-3">
+  <form (ngSubmit)="save()" #form="ngForm">
+    <div class="mb-3">
+      <label class="form-label">Data</label>
+      <input mdbInput type="date" [(ngModel)]="diario.data" name="data" class="form-control" />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Tipo</label>
+      <select class="form-select" [(ngModel)]="diario.tipo" name="tipo">
+        <option value="nota">Nota</option>
+        <option value="falta">Falta</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Valor</label>
+      <input mdbInput type="number" step="0.01" [(ngModel)]="diario.valor" name="valor" class="form-control" />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Observação</label>
+      <textarea mdbInput [(ngModel)]="diario.observacao" name="observacao" class="form-control"></textarea>
+    </div>
+    <button mdbBtn type="submit" class="btn btn-primary">Salvar</button>
+  </form>
+</div>
